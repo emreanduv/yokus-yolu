@@ -1,0 +1,27 @@
+A physics-based hill climbing race: hit the gas, conquer the slopes, keep your balance in the air and go as far as you can without flipping over!
+
+Keloğlan is at the wheel. Drive five vehicles, from a noble sixties sedan and a boxy eighties legend to a farm tractor and a centenary electric SUV, across the most beautiful roads of Türkiye and the Turkic world.
+
+STAGES
+• Cappadocia: fairy chimneys and sunrise balloons
+• Pamukkale: white travertine terraces and ancient columns
+• Black Sea Highlands: mist, pine forests and tea gardens
+• Foot of Mount Ararat: a snowy peak and slippery climbs
+• Kazakh Steppe: golden grassland, yurts and horses
+• Lake Issyk-Kul: the Tian Shan peaks and a turquoise lake
+
+VEHICLES
+• Devran 61: balanced and sturdy
+• Şahan 131: strong and steady
+• Anadal A1: light fibreglass body, nimble and quick
+• Toprak 55: slow, but climbs anything
+• Tagg T10: electric, silent, instant torque (collects charge instead of fuel)
+
+GAMEPLAY
+• Two pedals: GAS and BRAKE. In the air, gas tilts you back and brake tilts you forward.
+• Grab fuel cans and akçe coins; earn bonuses for flips and long jumps.
+• Upgrade engine, suspension, tires and tank in the garage.
+• Every stage’s goal is 1923 metres: reach it to unlock the next stage.
+• Turkish and English, no ads, works offline, collects no data.
+
+Made by Mr. Anduv!

@@ -1,0 +1,22 @@
+{
+  "name": "yokus-yolu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Yokuş Yolu - yerli klasik otomobillerle tepe tırmanma yarışı (iOS + Android, Capacitor)",
+  "scripts": {
+    "serve": "npx http-server www -p 8765 -c-1",
+    "sync": "npx cap sync",
+    "ikonlar": "capacitor-assets generate --ios --android --iconBackgroundColor '#1d3157' --iconBackgroundColorDark '#1d3157' --splashBackgroundColor '#0b1220' --splashBackgroundColorDark '#0b1220'"
+  },
+  "dependencies": {
+    "@capacitor-community/in-app-review": "^8.0.0",
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/cli": "^8.5.3",
+    "@capacitor/core": "^8.5.3",
+    "@capacitor/ios": "^8.5.3",
+    "@capacitor/share": "^8.0.3"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5"
+  }
+}

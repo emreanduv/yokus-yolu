@@ -1,0 +1,13 @@
+{
+  "appId": "com.anduv.yokusyolu",
+  "appName": "Yokuş Yolu",
+  "webDir": "www",
+  "backgroundColor": "#0b1220",
+  "android": {
+    "backgroundColor": "#0b1220"
+  },
+  "ios": {
+    "backgroundColor": "#0b1220",
+    "contentInset": "never"
+  }
+}
