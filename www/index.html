@@ -766,7 +766,7 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden&&state==='p
 /* ================= REHBER, AYARLAR, PUAN, PAYLAŞ, GÖRÜŞ ================= */
 const CAP=()=>!!(window.Capacitor&&window.Capacitor.isNativePlatform&&window.Capacitor.isNativePlatform());
 const PLAT=()=>{try{return window.Capacitor?window.Capacitor.getPlatform():'web';}catch(e){return 'web';}};
-const STORE_URL=()=>PLAT()==='android'?'https://play.google.com/store/apps/details?id=com.anduv.yokusyolu':'https://emreanduv.github.io/';
+const STORE_URL=()=>PLAT()==='android'?'https://play.google.com/store/apps/details?id=com.anduv.yokusyolu':'https://apps.apple.com/app/id6836515355';
 let coachCur=null,coachT=0;
 function coach(k){if(!game||SAVE.tips[k]||coachCur)return;const map={gas:['cGasT','cGas'],air:['cAirT','cAir'],fuel:game.car.def.fuel==='ev'?['cChargeT','cCharge']:['cFuelT','cFuel'],coin:['cCoinT','cCoin']};const m=map[k];if(!m)return;
  coachCur=k;coachT=k==='gas'?999:4;const e=$('coach');e.innerHTML='<b>'+T(m[0])+'</b>'+T(m[1]);e.style.display='block';if(k==='air')game.slow=1.4;if(k!=='gas'){SAVE.tips[k]=1;save();}}

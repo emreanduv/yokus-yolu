@@ -22,7 +22,7 @@ kontrol package.json '@capacitor-community/in-app-review' 'In-App Review eklenti
 kontrol package.json '@capacitor/share' 'Paylaş eklentisi'
 kontrol ios/App/App/AppDelegate.swift 'isIdleTimerDisabled = true' 'Ekran uyanık (iOS)'
 kontrol android/app/src/main/java/com/anduv/yokusyolu/MainActivity.java 'FLAG_KEEP_SCREEN_ON' 'Ekran uyanık (Android)'
-if [ -n "${CI:-}" ] && ! grep -q "@" www/iletisim.js; then echo "::error::Görüş adresi boş: repo Settings → Variables → FEEDBACK_MAIL ekleyin"; hata=1; fi
+if [ -n "${CI:-}" ] && ! grep -q "@" www/iletisim.js; then echo "::warning::Görüş adresi boş: repo Settings → Variables → FEEDBACK_MAIL ekleyin (Bize yaz adressiz açılır)"; fi
 if [ -n "${SURUM:-}" ] && [ -f store/SON-SURUM ]; then
   son=$(cat store/SON-SURUM)
   if [ "$(printf '%s\n%s\n' "$son" "$SURUM" | sort -V | head -1)" != "$son" ]; then echo "::error::Sürüm geri gidiyor: $SURUM < $son"; hata=1; else echo "✓ Sürüm $SURUM ≥ $son"; fi
