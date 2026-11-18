@@ -1,5 +1,8 @@
 name: Android (Google Play paketi)
 on:
+  push:
+    branches: [main]
+    paths: ['store/TETIK-ANDROID']
   workflow_dispatch:
     inputs:
       version_name:
@@ -16,7 +19,7 @@ jobs:
         env: { FM: "${{ vars.FEEDBACK_MAIL }}" }
         run: printf "window.FEEDBACK_MAIL='%s';\n" "$FM" > www/iletisim.js
       - name: Yayın öncesi kontrol (main dalı, özellikler eksiksiz, sürüm geri gitmiyor)
-        env: { SURUM: "${{ inputs.version_name }}" }
+        env: { SURUM: "${{ inputs.version_name || '1.0.0' }}" }
         run: bash araclar/yayin-kontrol.sh
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
@@ -32,13 +35,13 @@ jobs:
         working-directory: android
         env:
           VERSION_CODE: ${{ github.run_number }}
-          VERSION_NAME: ${{ inputs.version_name }}
+          VERSION_NAME: ${{ inputs.version_name || '1.0.0' }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEY_ALIAS: yokusyolu
         run: chmod +x gradlew && ./gradlew bundleRelease --no-daemon
       - name: Paketi builds dalına koy
         run: |
-          OUT=yokus-yolu-${{ inputs.version_name }}-${{ github.run_number }}.aab
+          OUT=yokus-yolu-${{ inputs.version_name || '1.0.0' }}-${{ github.run_number }}.aab
           cp android/app/build/outputs/bundle/release/app-release.aab /tmp/$OUT
           mkdir -p /tmp/b/android && cp /tmp/$OUT /tmp/b/android/ && cd /tmp/b
           git init -q -b builds && git config user.name "github-actions" && git config user.email "actions@github.com"
@@ -46,5 +49,5 @@ jobs:
           git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}" builds
       - uses: actions/upload-artifact@v4
         with:
-          name: yokus-yolu-${{ inputs.version_name }}-${{ github.run_number }}.aab
+          name: yokus-yolu-${{ inputs.version_name || '1.0.0' }}-${{ github.run_number }}.aab
           path: android/app/build/outputs/bundle/release/app-release.aab

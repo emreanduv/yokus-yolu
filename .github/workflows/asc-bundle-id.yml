@@ -1,7 +1,11 @@
 name: App Store Connect — Bundle ID kaydet
 # com.anduv.yokusyolu kimliğini Apple Developer hesabına kaydeder (zaten varsa dokunmaz).
 # Sonra App Store Connect → Uygulamalar → + Yeni Uygulama ekranında bu kimlik listede çıkar.
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/asc-bundle-id.yml']
 env:
   ASC_KEY_ID: DJSHKK6T3P
   ASC_ISSUER_ID: f4943ef8-df6f-42c8-a561-58554097ea35

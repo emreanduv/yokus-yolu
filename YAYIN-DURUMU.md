@@ -9,6 +9,7 @@ Görseller: `store/screenshots/{tr,en}/{iphone69,ipad13,play}` (`python3 araclar
 - [x] Capacitor iOS + Android projesi, simge ve açılış ekranı
 - [x] İş akışları: `ios.yml` (TestFlight), `android.yml` (AAB), `appstore-surum.yml` (metin+görsel), `asc-bundle-id.yml`
 - [x] Gizlilik sayfası yayında
+- [x] Repo açıldı (emreanduv/yokus-yolu). Derleme tetiği: store/TETIK-IOS ve store/TETIK-ANDROID dosyasını değiştirip main'e gönder
 - [ ] Emre: repo sırları/değişkeni (ASC_KEY_P8, ANDROID_KEYSTORE_B64, ANDROID_KEYSTORE_PASSWORD, FEEDBACK_MAIL)
 - [ ] Emre: App Store Connect'te "Yeni Uygulama" (Bundle ID listede) + fiyat 1,99 $
 - [ ] Emre: Play Console'da "Uygulama oluştur" (ücretli) + kapalı test listesi

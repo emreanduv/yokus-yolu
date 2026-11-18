@@ -1,5 +1,8 @@
 name: iOS (App Store Connect / TestFlight)
 on:
+  push:
+    branches: [main]
+    paths: ['store/TETIK-IOS']
   workflow_dispatch:
     inputs:
       version_name:
@@ -18,7 +21,7 @@ jobs:
         env: { FM: "${{ vars.FEEDBACK_MAIL }}" }
         run: printf "window.FEEDBACK_MAIL='%s';\n" "$FM" > www/iletisim.js
       - name: Yayın öncesi kontrol (main dalı, özellikler eksiksiz, sürüm geri gitmiyor)
-        env: { SURUM: "${{ inputs.version_name }}" }
+        env: { SURUM: "${{ inputs.version_name || '1.0.0' }}" }
         run: bash araclar/yayin-kontrol.sh
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
@@ -41,7 +44,7 @@ jobs:
             -destination 'generic/platform=iOS' -archivePath $RUNNER_TEMP/YokusYolu.xcarchive \
             DEVELOPMENT_TEAM=${{ env.APPLE_TEAM_ID }} CODE_SIGN_STYLE=Automatic \
             CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" \
-            MARKETING_VERSION=${{ inputs.version_name }} CURRENT_PROJECT_VERSION=${{ github.run_number }} \
+            MARKETING_VERSION=${{ inputs.version_name || '1.0.0' }} CURRENT_PROJECT_VERSION=${{ github.run_number }} \
             archive > $RUNNER_TEMP/arsiv.log 2>&1 || {
               grep -E 'error:|error |No Account|No profiles|requires a provisioning|bundle identifier' $RUNNER_TEMP/arsiv.log | sort -u | head -15 | while IFS= read -r l; do echo "::error::$l"; done
               tail -5 $RUNNER_TEMP/arsiv.log | while IFS= read -r l; do echo "::warning::$l"; done
