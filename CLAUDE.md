@@ -14,6 +14,7 @@ Her oyun/uygulamada olması gerekenler:
 6. **Verilerimi sil:** Ayarlar'da iki dokunuşla onaylanan silme; gizlilik politikasında e-postayla silme talebi (30 gün) ve hangi verinin neden işlendiği (Meta DUC şartı).
 7. **ASO:** Kısa açıklama ve uzun açıklamanın ilk 2-3 satırı aranan kelimeleri taşır (oyunun türü + konusu + öne çıkan özellik); yenilikler metni her sürümde güncellenir; App Store notlarında emoji yok.
 8. **Mağaza başvurusu cevapları:** Kalıp metin değil, gerçek süreç ve testten sonra yapılan değişiklikler yazılır (örnek: malazgirt-akincilari `store/surum-1.6.md`).
+9. **Fiyat ve Tam Sürüm (Emre'nin kuralı, 17 Kasım 2026; evrenin bütün ürünleri):** Hiçbir ürün mağazaya doğrudan paralı çıkmaz; mağaza fiyatı her zaman 0. Oyun ve uygulamalar her mağazada aynı düzende satılır: insanlar indirip dener, ilk bölüm sonuna kadar oynanır, devamı için uygulama içi tek seferlik **Tam Sürüm 1,99 $** (Apple IAP / Google Play Billing / Steam / Meta; "Satın alımı geri yükle" düğmesi; kilit ekranı kibar, oyunun ortasında değil bölüm sonunda). **İstisna, kamu yararı uygulamaları:** Yaşam Rehberi, Nutuk Salonu ve ileride bu türden olacak uygulamalar tamamen ücretsizdir, Tam Sürüm kilidi yoktur; onlarda amaç Mr. Anduv! adının ve markasının görünür olmasıdır. Gelişim Defteri G70.
 
 Yayın sırası: incelemedeki/testteki mağazada gönderilen sürüme onay gelene kadar dokunulmaz; onay gelince güncel sürüm yüklenir. Yayında olan mağazaya güncel sürüm hemen gönderilir. Derlemeler her zaman bütün değişiklikleri içeren daldan (main) alınır.
 
@@ -24,16 +25,6 @@ Yayın sırası: incelemedeki/testteki mağazada gönderilen sürüme onay gelen
 - Mağaza incelemesine göndermeden önce derleme TestFlight / kapalı testte cihazda açılıp yeni özellikler gözle doğrulanır.
 - Yayınlanan her sürümden sonra `store/SON-SURUM` güncellenir.
 
-## Tek isim, tek gelişim (Emre'nin kuralı, bütün oyun ve uygulamalar)
-- Bir oyun/uygulamanın adı **her mağazada aynıdır**: App Store, Google Play, Meta Horizon (VR), Steam, saat uygulamaları. Mağazaya göre ek ("VR", "Mobile" vb.) konmaz.
-- Teknik olarak mümkün olan her geliştirme, güncelleme ve iyileştirme **o ürünün bütün mağazalardaki sürümlerine** yapılır (telefon ↔ VR ↔ masaüstü). Platforma özgü olanlar karşılığıyla taşınır (VR kumanda titreşimi → telefonda dokunuş titreşimi).
-
-## Türkçe yazı ve iOS işaretleri (Emre'nin kuralı: hiçbir oyunda/uygulamada görülmesin)
-- Yazı dosyaları (fontsource woff2) kendi @font-face'imizle tanımlanıyorsa **Türkçe "ı" (U+0131) latin dosyasındadır, latin-ext'te değil.** Latin aralığı fontsource'un resmî aralığıyla yazılır (U+0000-00FF,U+0131,U+0152-0153,…); "U+0000-00FF,U+2000-206F" gibi kısa aralık yazılırsa iPhone/iPad'de "ı" boş görünür (Mayıs → "May s"). Chrome/Quest fark ettirmez, iOS ettirir.
-- Tuvale (canvas) yazmadan önce yazı dosyaları Türkçe harflerle yüklenir: `document.fonts.load(font, 'ıİşŞğĞçÇöÖüÜ')`; geç gelirse yeniden çizilir.
-- ◀ ▶ ⏵ ⏸ ⏭ ⏮ gibi işaretlerin hemen arkasına metin biçimi seçicisi **U+FE0E** konur; yoksa iOS bunları mavi emoji kutusu olarak çizer.
-- `araclar/turkce-yazi-kontrol.py` yayın öncesi kontrolden çağrılır; tutmazsa derleme durur. Aynı denetim bütün repolara eklenir. (Kaynak: Nutuk Salonu TestFlight, Kasım 2026.)
-
 ### Gelişim Defteri (Emre'nin kuralı, 14 Kasım 2026)
 Bütün oyun ve uygulamalar tek evren: bir üründe yapılan iyileştirme, gerekliyse hepsine derç edilir. Takip tek yerde: emreanduv/emreanduv-tamga-yolu `evren/GELISIM.md` (evren kitabının kardeşi). Bu üründe işe başlarken defterde bu ürünün sütunundaki `⏳` satırlara bak; yeni bir iyileştirme/ders/ortak özellik yapınca deftere satır ekle ve her ürün için durumunu yaz (`⏳` uyar, `—` uymaz); bir ürüne uygulayınca hücreyi `✓` yap. Bilmediğini `?` bırak, tahminle `✓` yazma.
 
@@ -43,12 +34,31 @@ Reklam, satış ve pazarlama üretmek kadar önemlidir. Panolar, mağaza sayfala
 ### Reklam panoları (Mr. Anduv! marka tutarlılığı)
 Herhangi bir oyunda/uygulamada reklam ya da reklam panosu (stadyum panosu, tabela, kayan şerit) varsa **yalnız Mr. Anduv! ortak pano seti** kullanılır. Kaynak: emreanduv/kaptan-mecit `km3/veri/takimlar.json` → `"panolar"` (Champion Battle Manager ile aynı). Aynı metinler, aynı zemin/yazı renkleri; dönen panolarda 7 saniyede bir değişim (`(i*5 + tur*3) % n`). Başka marka, kurum ya da uydurma marka yok. Listeye yeni oyun/hesap eklenince önce kaynak listeye eklenir, sonra bütün repolarda güncellenir.
 
+### Klasik kumanda (Gameboy modu) standardı — Emre'nin onayladığı ölçü (Kurt Yolu 1.3.5, 11 Kasım 2026)
+Klasik kumanda her oyuna konmaz: yalnız yakıştığı oyunlarda (yön + iki tuşla oynanan aksiyon/macera/spor oyunları; karar Claude'un, Emre'nin onayıyla). Konduğu her oyunda bu tarif uygulanır. **Klasik kumandalı oyunlar listesi:** Tamga Yolu, Kurt Yolu, Tulpar, Legend Heads (Kafa Topu), Topçular, Gökalp (Emre onayı, 13 Kas 2026). **Kaptan Mecit'te yok** (Emre, 11 Kas 2026: denendi; futbolda iyi bir oyun deneyimi vermedi ve ekranı küçülttü, sahada dokunmatik ideal — 11 kişilik futbol oyunlarına klasik kumanda konmaz). Yeni bir oyun eklenecekse önce Emre sorulur, sonra bu liste bütün bu repolarda güncellenir. Kendi kumandasını sıfırdan yazma; en son çalışan sürümü kopyala: Phaser oyunlarında emreanduv/kurt-yolu `src/kumanda.js` (+ `src/theme.js` gbGenislik), DOM/canvas oyunlarında emreanduv/legend-heads `www/kumanda.js`.
+
+**Ölçü (dik ekran):**
+- Oyun ekranı altın/tema çerçevenin içine **boşluksuz** oturur: içeride siyah bant yok, çerçeve ekranın iki kenarına yapışık (kenar payı ≈6 px, çerçeve iç payı ≈7 px, ince çift halka).
+- Çerçeve saatin/çentiğin hemen altından başlar (güvenli alan + ≈6 px), kumandanın hemen üstünde biter; arada boş zemin kalmaz.
+- Kumanda altta kendi zemininde, ≈222–240 px yükseklik; yön haçı ≈130 px, A/B ≈66 px, MENÜ hapı, oyunun adı ve "Bir Mr. Anduv! yapımıdır.".
+- Boşluğu oyun alanını büyüterek kapat, çerçeveyi daraltarak değil: oyunun görüş alanı (genişlik/yükseklik) kumandanın üstünde kalan kutunun oranına göre seçilir (Kurt Yolu: genişlik 360–480; Legend Heads: sahne oranı serbest, kamera izler). Karakterler küçülmez, daha fazla alan görünür.
+- Kutunun ölçüsü telefonun gerçek ölçüsüyle (güvenli alan dahil) yerleşim oturduktan sonra hesaplanır ve cihazda saklanır; açılıştaki tahminden farklıysa oyun ana menüdeyken bir kez yeniden kurulur. iPhone açılışın ilk anında güvenli alanı 0 bildirebilir.
+
+**Kurallar:**
+- Yerleşim JS ile piksel olarak; `vh`, `cqw/cqh` ve dolguya güvenilmez (WebKit'te taşma). Güvenli alan ölçüm kutusuyla `env(safe-area-inset-*)`'ten okunur; döndürme/yeniden boyutlanmada birkaç kez yeniden ölçülür.
+- Oklar CSS üçgen (ya da `&#xFE0E;`); iPhone ◀ ▶'yı emojiye çeviriyor.
+- Yan ekranda: yön haçı solda, A/B sağda, oyun ortada tam yükseklikte; paneller ≈150–190 px.
+- Odak çerçevesi kamera kaymasını ve düğmenin kendi boyunu hesaba katar. Menülerde yön tuşları gezer, A basar, B geri, MENÜ mola. Bluetooth oyun kolu (Gamepad API) ve klavye her modda çalışır.
+- Ayar varsayılan olarak kapalı, Ayarlar'dan açılır; ipucu kartı. Klasik kumanda kapalıyken oyunun desteklemediği yönde "telefonu çevir ya da klasik kumandayı aç" perdesi.
+- Her oyunun kabuğu kendi temasında (renk, yazı, logo).
+
 ### Mr. Anduv! evreni ve kaynak kuralları (Emre'nin kuralı, 11 Kasım 2026)
 Bütün oyun ve uygulamalar tek bir evrende yaşar: **Türk / Türk-İslam kaynağı → oyun, çizim, çizgi film → yeniden kaynağa dönen içerik.** Merkezde para değil karakter ve hikâye durur; her ürün ötekinin kapısıdır.
 - **Tek kaynak:** emreanduv/emreanduv-tamga-yolu `evren/EVREN.md` (zaman çizgisi, ortak karakterler, kaynaklar, saygı kuralları). Hayvan/yaratık listesi aynı repoda `src/veri.js` → `YARATIK` (ad, renk, Bitig yazısı; çizimler `src/cizimler*.js`). Yeni karakter, yaratık ya da hikâye önce evren kitabına yazılır, sonra oyuna girer.
 - **Ortak karakterler** (Dede Korkut, Temür ve Bozbörü, Tulpar, Keloğlan, Tepegöz, Yelbegen, Karakoncolos, Albastı…) her oyunda aynı ad, görünüş ve kişilikle yer alır. Yeni içerikte "bu karakter başka hangi oyunda yaşayabilir?" diye bakılır.
 - **Kaynak:** Yazılı kaynağı olan destan, yazıt, eser, halk inancı, gerçek tarih ve yerli hayvan/yer. Uydurma "eski Türk inancı" yok; tarihî bilgi doğrulanır.
 - **Saygı:** Peygamberimiz, ehl-i beyt ve sahabe tasvir edilmez (yüz, beden, ses taklidi yok). Kutsal varlık, mekân ve eşya (Burak, Kâbe, Kur'an, mescit) dövüşmez, yakalanmaz, satılmaz, hasar görmez; gerekirse adı anılmadan ışık ya da his olarak yer alır (örnek: Tamga Yolu 1923. basamak gecesindeki ışık). Ayet/hadis uydurulmaz, değiştirilmez. Tanrı ve kutsal sayılan varlıklar beden olarak çizilmez. Efsane efsane, tarih tarih olarak sunulur; tarihî kişiler karikatürleştirilmez; karşı taraf aşağılanmaz. Dış efsaneler yalnız konuk/rakip olarak, saygıyla.
+- **Yer seçimi (Emre, 17 Kas 2026):** Dünya, bölüm, harita ve arka plan seçerken önce Türkiye'nin güzellikleri (Kapadokya, Pamukkale, Van Gölü, Karadeniz yaylaları, Ağrı Dağı, Nemrut, Salda…), sonra Türk yurtları, Türk cumhuriyetleri ve Türk devletlerinin toprakları (Ötüken, Altay, Tanrı Dağları ve Isık Göl, Hazar kıyısı…). Coğrafya gerçeğe uygun çizilir. Ayrıntı: evren kitabı 4b.
 - **Tema yazıyla söylenmez, hissettirilir.** İmza her yerde: 1923 ve "Bir Mr. Anduv! yapımıdır.".
 - **Şiar:** Türk tarihi, Türk kültürü, Türk-İslam sentezi (iç belge; oyunda yazmaz).
 - **Kendiliğinden yönet:** Claude bu mantığı Emre sormadan uygular. Evren kitabındaki "Seçim mantığı" altı kapısına (destan hayvanları, bugünün yerli simgeleri ör. Malaklı, yaşayan efsaneler ör. Van Gölü Canavarı, halk inançları, endemik doğa, ışıkla anılan kutsal) bakarak her oyunda ve her büyük sürümde yeni öneriler getirir, uyanları ekler, evren kitabının "Fikir defteri"ni günceller. Dinî hassasiyeti olan ya da tartışmalı öneri önce Emre'ye sorulur.

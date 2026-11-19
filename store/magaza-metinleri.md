@@ -1,11 +1,11 @@
-# Yokuş Yolu — mağaza bilgileri (1.0.0)
+# Yokuş Yolu — mağaza bilgileri (1.0.0: 1923 bölüm, 10 sahne)
 
 | Alan | Değer |
 |---|---|
 | Ad (her mağazada aynı) | Yokuş Yolu |
 | Bundle ID / paket | `com.anduv.yokusyolu` |
 | SKU | `yokus-yolu` |
-| Fiyat | Ücretli uygulama, 1,99 $ (App Store fiyat basamağı 1,99 USD; Play 1,99 USD) — uygulama içi satın alım yok |
+| Fiyat | Mağazada ücretsiz; ilk 100 bölüm açık. Uygulama içi tek seferlik **Tam Sürüm 1,99 $** (`com.anduv.yokusyolu.tamsurum`, iOS non-consumable / Play tek seferlik ürün) bölüm 101–1923'ü açar |
 | Kategori | App Store: Oyunlar → Yarış (ikincil: Arcade) · Play: Oyun → Yarış |
 | Yaş | App Store 4+ · Play: IARC anketi "şiddet yok" → PEGI 3 / ESRB Everyone |
 | Gizlilik | Veri toplanmıyor (App Store "Data Not Collected", Play Veri güvenliği: veri toplanmıyor/paylaşılmıyor) |
@@ -15,8 +15,8 @@
 | Yön | Yalnız yatay (iPad: tam ekran gerekli) |
 
 ## Google Play
-**Kısa açıklama (TR, ≤80):** Klasik araçlarla tepe tırmanma yarışı: Kapadokya’dan Issık Göl’e, hedef 1923 m!
-**Short description (EN, ≤80):** Hill climb racing in classic cars: Cappadocia to Issyk-Kul, goal 1923 m!
+**Kısa açıklama (TR, ≤80):** Tepe tırmanma yarışı: 1923 bölüm, Kapadokya’dan Altaylar’a klasik araçlar!
+**Short description (EN, ≤80):** Hill climb racing: 1923 levels from Cappadocia to the Altai in classic cars!
 **Uzun açıklama:** `appstore-metadata/tr/description.txt` ile aynı (EN: `appstore-metadata/en-US/description.txt`).
 **Görseller:** simge `play-icon-512.png`, özellik görseli `play-feature-1024x500.png`, telefon ekran görüntüleri `screenshots/{tr,en}/play/*.png` (1920×1080).
 

@@ -1,27 +1,29 @@
-A physics-based hill climbing race: hit the gas, conquer the slopes, keep your balance in the air and go as far as you can without flipping over!
+A physics-based hill climbing race: 1923 levels, 10 stages, 5 legendary rides. Hit the gas, conquer the slopes, keep your balance in the air and complete each level’s goal without flipping over!
 
-Keloğlan is at the wheel. Drive five vehicles, from a noble sixties sedan and a boxy eighties legend to a farm tractor and a centenary electric SUV, across the most beautiful roads of Türkiye and the Turkic world.
+Keloğlan is at the wheel. The road runs from the fairy chimneys of Cappadocia to Pamukkale, the Black Sea highlands, Mount Ararat, Nemrut and Lake Van, then on to the Kazakh steppe, Lake Issyk-Kul, Samarkand and the Altai Mountains.
+
+1923 LEVELS
+• Every level has a goal: distance, akçe coins, flips, airtime or a road without fuel cans.
+• Finish fast for three stars. Each stage ends with the 1923-metre milestone.
+• The first 100 levels are free. The Full Version (one-time purchase) opens the whole road.
 
 STAGES
-• Cappadocia: fairy chimneys and sunrise balloons
-• Pamukkale: white travertine terraces and ancient columns
-• Black Sea Highlands: mist, pine forests and tea gardens
-• Foot of Mount Ararat: a snowy peak and slippery climbs
-• Kazakh Steppe: golden grassland, yurts and horses
-• Lake Issyk-Kul: the Tian Shan peaks and a turquoise lake
+Cappadocia, Pamukkale, Black Sea Highlands, Foot of Mount Ararat, Mount Nemrut, Lake Van, Kazakh Steppe, Lake Issyk-Kul, Samarkand, Altai Mountains.
 
 VEHICLES
 • Devran 61: balanced and sturdy
 • Şahan 131: strong and steady
 • Anadal A1: light fibreglass body, nimble and quick
 • Toprak 55: slow, but climbs anything
-• Tagg T10: electric, silent, instant torque (collects charge instead of fuel)
+• Tagg T10: electric, silent, instant torque
+
+ROADSIDE FRIENDS
+A Malaklı dog waiting by the road, pearl mullet leaping in Lake Van and an odd-eyed Van cat at the finish line.
 
 GAMEPLAY
 • Two pedals: GAS and BRAKE. In the air, gas tilts you back and brake tilts you forward.
-• Grab fuel cans and akçe coins; earn bonuses for flips and long jumps.
 • Upgrade engine, suspension, tires and tank in the garage.
-• Every stage’s goal is 1923 metres: reach it to unlock the next stage.
+• Free ride: drive without a goal and beat your record.
 • Turkish and English, no ads, works offline, collects no data.
 
 Made by Mr. Anduv!
