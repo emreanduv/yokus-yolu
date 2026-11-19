@@ -11,7 +11,9 @@ Görseller: `store/screenshots/{tr,en}/{iphone69,ipad13,play}` (`python3 araclar
 - [x] Gizlilik sayfası yayında
 - [x] Repo açıldı (emreanduv/yokus-yolu). Derleme tetiği: store/TETIK-IOS ve store/TETIK-ANDROID dosyasını değiştirip main'e gönder
 - [ ] Emre: repo sırları/değişkeni (ASC_KEY_P8, ANDROID_KEYSTORE_B64, ANDROID_KEYSTORE_PASSWORD, FEEDBACK_MAIL)
-- [ ] Emre: App Store Connect'te "Yeni Uygulama" (Bundle ID listede) + fiyat 1,99 $
+- [x] App Store Connect kaydı (id 6836515355), TestFlight 1.0.0 (1) beta onaylı, test grubu kuruldu
+- [x] App Store 1.0.0: metin + ekran görüntüleri TR/EN, kategori Yarış, yaş 4+, fiyat 1,99 $, bölgeler (Çin hariç), inceleme bilgileri, derleme seçili (`store/TETIK-APPSTORE` → appstore-hazir.yml)
+- [ ] Emre: App Privacy → Veri toplamıyoruz → Yayınla; sonra Add for Review
 - [ ] Emre: Play Console'da "Uygulama oluştur" (ücretli) + kapalı test listesi
 - [ ] TestFlight + Play kapalı test → cihazda doğrulama → incelemeye gönder
 - [ ] Steam (Electron) ve Meta Horizon (WebXR/Quest) paketleri
