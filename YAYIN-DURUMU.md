@@ -1,6 +1,6 @@
-# Yokuş Yolu — Yayın durumu (18 Kasım 2026)
+# Yokuş Yolu — Yayın durumu (19 Kasım 2026)
 
-Kimlik: `com.anduv.yokusyolu` (iOS + Android) · SKU `yokus-yolu` · Ücretli 1,99 $ · Yalnız yatay
+Kimlik: `com.anduv.yokusyolu` (iOS + Android) · SKU `yokus-yolu` · Mağazada ücretsiz, Tam Sürüm 1,99 $ (`com.anduv.yokusyolu.tamsurum`, ilk 100 bölüm açık) · Yalnız yatay
 Gizlilik: https://emreanduv.github.io/yokus-yolu/gizlilik.html · Mağaza metinleri: `store/magaza-metinleri.md`, `store/appstore-metadata/`
 Görseller: `store/screenshots/{tr,en}/{iphone69,ipad13,play}` (`python3 araclar/magaza-gorselleri.py`), `store/play-icon-512.png`, `store/play-feature-1024x500.png`
 
@@ -13,7 +13,10 @@ Görseller: `store/screenshots/{tr,en}/{iphone69,ipad13,play}` (`python3 araclar
 - [ ] Emre: repo sırları/değişkeni (ASC_KEY_P8, ANDROID_KEYSTORE_B64, ANDROID_KEYSTORE_PASSWORD, FEEDBACK_MAIL)
 - [x] App Store Connect kaydı (id 6836515355), TestFlight 1.0.0 (1) beta onaylı, test grubu kuruldu
 - [x] App Store 1.0.0: metin + ekran görüntüleri TR/EN, kategori Yarış, yaş 4+, fiyat 1,99 $, bölgeler (Çin hariç), inceleme bilgileri, derleme seçili (`store/TETIK-APPSTORE` → appstore-hazir.yml)
-- [ ] Emre: App Privacy → Veri toplamıyoruz → Yayınla; sonra Add for Review
+- [x] 1.0.0 (2): 1923 bölüm, 10 sahne, Tam Sürüm, FM2010 menü, Malaklı/Van kedisi; TestFlight'ta (beta inceleme gönderildi); App Store sürümüne derleme 2 seçili; uygulama fiyatı ücretsiz; Tam Sürüm IAP oluşturuldu (yerelleştirme, 1,99 $, bölgeler, inceleme görseli)
+- [ ] Emre: TestFlight'ta 1.0.0 (2)'yi dene
+- [ ] Emre: App Privacy → Veri toplamıyoruz → Yayınla; sürüm sayfasında "In-App Purchases" bölümüne Tam Sürüm'ü ekle; sonra Add for Review
+- Derleme tetikleri: `store/TETIK-IOS` (iOS derle), `store/DERLEME` (beklenen derleme no; TestFlight'a aç), `store/TETIK-APPSTORE` (metin, görsel, fiyat, IAP, derleme seçimi)
 - [ ] Emre: Play Console'da "Uygulama oluştur" (ücretli) + kapalı test listesi
 - [ ] TestFlight + Play kapalı test → cihazda doğrulama → incelemeye gönder
 - [ ] Steam (Electron) ve Meta Horizon (WebXR/Quest) paketleri
