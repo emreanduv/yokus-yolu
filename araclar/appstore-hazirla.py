@@ -29,14 +29,21 @@ info=[i for i in infos if i['attributes'].get('appStoreState') not in ('READY_FO
 iid=info[0]['id']
 ard=get(f'/v1/appInfos/{iid}/ageRatingDeclaration')['data']
 print('yaş alanları:',json.dumps(ard['attributes'],ensure_ascii=False))
-atla={'kidsAgeBand','ageRatingOverride','ageRatingOverrideV2','koreaAgeRatingOverride','developerAgeRatingInfoUrl','seventeenPlus'}
-for k,val in ard['attributes'].items():
-    if k in atla: continue
-    if isinstance(val,bool) or val is None:
-        r=send('PATCH',f"/v1/ageRatingDeclarations/{ard['id']}",{'data':{'type':'ageRatingDeclarations','id':ard['id'],'attributes':{k:False}}})
-        if r.status_code>=400: send('PATCH',f"/v1/ageRatingDeclarations/{ard['id']}",{'data':{'type':'ageRatingDeclarations','id':ard['id'],'attributes':{k:'NONE'}}})
-    elif isinstance(val,str) and val!='NONE':
-        send('PATCH',f"/v1/ageRatingDeclarations/{ard['id']}",{'data':{'type':'ageRatingDeclarations','id':ard['id'],'attributes':{k:'NONE'}}})
+atla={'kidsAgeBand','ageRatingOverride','ageRatingOverrideV2','koreaAgeRatingOverride','developerAgeRatingInfoUrl','gracRatingClassificationNumber'}
+BOOL={'advertising','gambling','lootBox','messagingAndChat','parentalControls','ageAssurance','unrestrictedWebAccess','userGeneratedContent','healthOrWellnessTopics','socialMedia','socialMediaAgeRestricted','sharedLocation','datingAndRelationships'}
+deg={k:(False if k in BOOL else 'NONE') for k in ard['attributes'] if k not in atla}
+for tur in range(8):
+    r=requests.patch(f"{B}/v1/ageRatingDeclarations/{ard['id']}",headers=H(),json={'data':{'type':'ageRatingDeclarations','id':ard['id'],'attributes':deg}})
+    if r.status_code<400: print('✓ yaş derecelendirmesi', r.status_code); break
+    errs=r.json().get('errors',[]); degisti=False
+    for e in errs:
+        k=(e.get('source',{}).get('pointer','') or '').split('/')[-1]
+        if k in deg and e['code'].endswith('TYPE'): deg[k]=(False if deg[k]=='NONE' else 'NONE'); degisti=True
+        elif k in deg and e['code'].endswith('REQUIRED'): pass
+        elif k and k not in deg and e['code'].endswith('REQUIRED'): deg[k]=False; degisti=True
+        elif k in deg and 'INVALID' in e['code']: deg.pop(k); degisti=True
+    print('yaş denemesi',tur,r.status_code,[ (e['code'],e.get('source',{}).get('pointer')) for e in errs][:12])
+    if not degisti: rapor.append('Yaş derecelendirmesi otomatik doldurulamadı'); break
 # --- fiyat 1,99 $ (ABD taban)
 url=f'{B}/v1/apps/{APP}/appPricePoints'; q={'filter[territory]':'USA','limit':200}; pp=None
 while url and not pp:
