@@ -68,7 +68,7 @@ r=send('POST','/v2/appAvailabilities',{'data':{'type':'appAvailabilities','attri
 if r.status_code==409: print('bölgeler zaten ayarlı')
 # --- inceleme bilgileri (iletişim Malazgirt'ten)
 notes=('Yokuş Yolu is a single-player, offline hill climbing game with 1923 levels. No account or login, no ads, no data collection. '
- 'The first 100 levels are free; the one-time non-consumable in-app purchase "Tam Sürüm / Full Version" (com.anduv.yokusyolu.tamsurum) unlocks levels 101-1923. '
+ 'The first 10 levels are free; the one-time non-consumable in-app purchase "Tam Sürüm / Full Version" (com.anduv.yokusyolu.tamsurum) unlocks levels 11-1923. '
  'It can be bought from the star button in the main menu or Settings, and restored with "Restore purchases" in the same places. '
  'On first launch the game asks for the language (Turkish/English). Tap "Yola çık / Hit the road" and hold the right pedal (GAS); the left pedal is BRAKE. '
  'Vehicles and upgrades are bought only with in-game coins (akçe) earned by playing. '
@@ -107,7 +107,7 @@ iap=[x for x in iaps if x['attributes']['productId']==PID]
 if iap: iid2=iap[0]['id']; print('IAP var',iid2,iap[0]['attributes'].get('state'))
 else:
     r=send('POST','/v2/inAppPurchases',{'data':{'type':'inAppPurchases','attributes':{'name':'Tam Sürüm','productId':PID,'inAppPurchaseType':'NON_CONSUMABLE','familySharable':False,
-      'reviewNote':'Unlocks levels 101-1923. Offered after level 100 and from the star button in the main menu / Settings. Restore purchases is in the same places.'},'relationships':{'app':{'data':{'type':'apps','id':APP}}}}})
+      'reviewNote':'Unlocks levels 11-1923. Offered after level 10 and from the star button in the main menu / Settings. Restore purchases is in the same places.'},'relationships':{'app':{'data':{'type':'apps','id':APP}}}}})
     iid2=r.json()['data']['id'] if r.status_code<400 else None
 if iid2:
     have={x['attributes']['locale'] for x in get(f'/v2/inAppPurchases/{iid2}/inAppPurchaseLocalizations')['data']}
@@ -129,6 +129,8 @@ if iid2:
         ex=None
         try: ex=get(f'/v2/inAppPurchases/{iid2}/appStoreReviewScreenshot')['data']
         except Exception: ex=None
+        if ex:
+            send('DELETE',f"/v1/inAppPurchaseAppStoreReviewScreenshots/{ex['id']}",None); ex=None
         if not ex:
             import hashlib
             data=open('store/iap-inceleme.png','rb').read()

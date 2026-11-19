@@ -1,6 +1,6 @@
 # Yokuş Yolu — Yayın durumu (19 Kasım 2026)
 
-Kimlik: `com.anduv.yokusyolu` (iOS + Android) · SKU `yokus-yolu` · Mağazada ücretsiz, Tam Sürüm 1,99 $ (`com.anduv.yokusyolu.tamsurum`, ilk 100 bölüm açık) · Yalnız yatay
+Kimlik: `com.anduv.yokusyolu` (iOS + Android) · SKU `yokus-yolu` · Mağazada ücretsiz, Tam Sürüm 1,99 $ (`com.anduv.yokusyolu.tamsurum`, ilk 10 bölüm açık) · Yalnız yatay
 Gizlilik: https://emreanduv.github.io/yokus-yolu/gizlilik.html · Mağaza metinleri: `store/magaza-metinleri.md`, `store/appstore-metadata/`
 Görseller: `store/screenshots/{tr,en}/{iphone69,ipad13,play}` (`python3 araclar/magaza-gorselleri.py`), `store/play-icon-512.png`, `store/play-feature-1024x500.png`
 

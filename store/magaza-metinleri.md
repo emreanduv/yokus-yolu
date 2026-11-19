@@ -5,7 +5,7 @@
 | Ad (her mağazada aynı) | Yokuş Yolu |
 | Bundle ID / paket | `com.anduv.yokusyolu` |
 | SKU | `yokus-yolu` |
-| Fiyat | Mağazada ücretsiz; ilk 100 bölüm açık. Uygulama içi tek seferlik **Tam Sürüm 1,99 $** (`com.anduv.yokusyolu.tamsurum`, iOS non-consumable / Play tek seferlik ürün) bölüm 101–1923'ü açar |
+| Fiyat | Mağazada ücretsiz; ilk 10 bölüm açık. Uygulama içi tek seferlik **Tam Sürüm 1,99 $** (`com.anduv.yokusyolu.tamsurum`, iOS non-consumable / Play tek seferlik ürün) bölüm 11–1923'ü açar |
 | Kategori | App Store: Oyunlar → Yarış (ikincil: Arcade) · Play: Oyun → Yarış |
 | Yaş | App Store 4+ · Play: IARC anketi "şiddet yok" → PEGI 3 / ESRB Everyone |
 | Gizlilik | Veri toplanmıyor (App Store "Data Not Collected", Play Veri güvenliği: veri toplanmıyor/paylaşılmıyor) |

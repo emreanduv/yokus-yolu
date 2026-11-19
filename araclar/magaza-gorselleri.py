@@ -42,7 +42,7 @@ async def main():
                     await pg.screenshot(path=os.path.join(out,f'0{i+1}.png'))
                     await pg.evaluate("()=>{const e=document.getElementById('shotcap');if(e)e.remove();}")
                 if k=='iphone69' and lang=='tr':
-                    await pg.evaluate("()=>{state='menu';show('menu');openFull(101);}");await pg.wait_for_timeout(400)
+                    await pg.evaluate("()=>{state='menu';show('menu');openFull(11);}");await pg.wait_for_timeout(400)
                     await pg.screenshot(path=os.path.join(KOK,'store','iap-inceleme.png'))
                 await pg.close()
         await b.close()
