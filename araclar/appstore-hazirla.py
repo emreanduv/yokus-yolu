@@ -88,9 +88,11 @@ except Exception: rd=None
 if rd: send('PATCH',f"/v1/appStoreReviewDetails/{rd['id']}",{'data':{'type':'appStoreReviewDetails','id':rd['id'],'attributes':at}})
 else: send('POST','/v1/appStoreReviewDetails',{'data':{'type':'appStoreReviewDetails','attributes':at,'relationships':{'appStoreVersion':{'data':{'type':'appStoreVersions','id':vid}}}}})
 if 'contactEmail' not in at: rapor.append('İnceleme iletişim bilgisi kopyalanamadı (App Review bölümünde elle)')
-# --- derleme seç (en yeni derleme işlenene kadar bekle)
+# --- derleme seç (beklenen derleme görünüp işlenene kadar bekle)
+MIN=int(open('store/DERLEME').read().strip()) if os.path.exists('store/DERLEME') else 0
 for _ in range(60):
     nb=get('/v1/builds',**{'filter[app]':APP,'filter[preReleaseVersion.version]':SURUM,'sort':'-uploadedDate','limit':1})['data']
+    if nb and int(nb[0]['attributes']['version'])<MIN: print('derleme',MIN,'bekleniyor…'); time.sleep(60); continue
     if not nb or nb[0]['attributes']['processingState']!='PROCESSING': break
     print('derleme işleniyor…'); time.sleep(60)
 bs=[b for b in get('/v1/builds',**{'filter[app]':APP,'filter[preReleaseVersion.version]':SURUM,'sort':'-uploadedDate','limit':5})['data'] if b['attributes']['processingState']=='VALID']

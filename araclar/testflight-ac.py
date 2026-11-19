@@ -18,8 +18,11 @@ def patch(p,body):
     return r
 # 1) son derleme işlensin
 build=None
+MIN=int(os.environ.get('MIN_BUILD') or (open('store/DERLEME').read().strip() if os.path.exists('store/DERLEME') else 0) or 0)
+print('beklenen derleme no ≥',MIN)
 for i in range(70):
     d=get('/builds',**{'filter[app]':APP,'sort':'-uploadedDate','limit':1})['data']
+    if d and int(d[0]['attributes']['version'])<MIN: print('derleme',MIN,'henüz görünmüyor'); time.sleep(60); continue
     if d:
         st=d[0]['attributes']['processingState']; print('derleme',d[0]['attributes']['version'],st)
         if st=='VALID': build=d[0]; break
