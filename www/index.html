@@ -222,7 +222,7 @@ const TX={
   effE:'Daha güçlü çekiş, daha yüksek hız',effS:'Daha yumuşak, dengeli iniş',effT:'Yokuşta daha iyi tutunma',effF:'Daha uzun yol',
   paused:'Mola',resume:'Devam',retry:'Tekrar',menu:'Menü',gas:'GAZ',brake:'FREN',over:'Yolculuk bitti',
   rHead:'Keloğlan kafayı vurdu!',rFuel:'Yakıt bitti!',rCharge:'Şarj bitti!',dist:'Mesafe',coins:'Toplanan akçe',bonus:'Bonuslar',newRec:'Yeni rekor!',
-  flip:'Takla',air:'Uçuş',sec:'sn',fuelUp:'Depo doldu',chargeUp:'Şarj doldu',m1923:'1923 m! Menzile ulaştın',unlockedNext:'Yeni sahne açıldı: ',
+  flip:'Takla',air:'Uçuş',sec:'sn',fuelUp:'Depo doldu',devrim:'Bu sefer yolun sonuna kadar!',devrimAlt:'Devran 61 rozeti · Depo hediye',chargeUp:'Şarj doldu',m1923:'1923 m! Menzile ulaştın',unlockedNext:'Yeni sahne açıldı: ',
   need:'1923 m\'ye ulaş ya da',notEnough:'Yeterli akçe yok',rotate:'Daha geniş görüş için telefonu yan çevir',goal:'Hedef 1923 m',lowFuel:'Yakıt az!',lowCharge:'Şarj az!',
   driver:'Sürücü: Keloğlan',classic:'Klasik',
   bolumler:'Bölümler',free:'Serbest Sürüş',progress:'{n}/1923 bölüm · {s} yıldız',freeGo:'Serbest sür',contB:'Devam: Bölüm {n}',stLocked:'Bu sahne önceki sahnenin bölümleri bitince açılır',
@@ -248,7 +248,7 @@ const TX={
   effE:'More pull, higher top speed',effS:'Softer, steadier landings',effT:'Better grip on climbs',effF:'Go further',
   paused:'Paused',resume:'Resume',retry:'Retry',menu:'Menu',gas:'GAS',brake:'BRAKE',over:'Ride over',
   rHead:'Keloğlan bumped his head!',rFuel:'Out of fuel!',rCharge:'Out of charge!',dist:'Distance',coins:'Akçe collected',bonus:'Bonuses',newRec:'New record!',
-  flip:'Flip',air:'Airtime',sec:'s',fuelUp:'Tank refilled',chargeUp:'Recharged',m1923:'1923 m! Milestone reached',unlockedNext:'New stage unlocked: ',
+  flip:'Flip',air:'Airtime',sec:'s',fuelUp:'Tank refilled',devrim:'This time, all the way!',devrimAlt:'Devran 61 badge · Free tank',chargeUp:'Recharged',m1923:'1923 m! Milestone reached',unlockedNext:'New stage unlocked: ',
   need:'Reach 1923 m or',notEnough:'Not enough akçe',rotate:'Rotate your phone for a wider view',goal:'Goal 1923 m',lowFuel:'Low fuel!',lowCharge:'Low charge!',
   driver:'Driver: Keloğlan',classic:'Classic',
   bolumler:'Levels',free:'Free Ride',progress:'{n}/1923 levels · {s} stars',freeGo:'Free ride',contB:'Continue: Level {n}',stLocked:'This stage opens once the previous stage’s levels are done',
@@ -851,6 +851,8 @@ function update(fdt){
  // fuel
  if(!g.crashed&&!g.won){g.fuel-=fdt*(.22+.78*(input.gas?1:0))/C.sp.tank;if(g.fuel<0)g.fuel=0;}
  const spd=Math.hypot(C.vx,C.vy);
+ /* 1961'de 29 Ekim gösterisinde benzini biten ilk otomobile saygı: Devran'la ilk kez benzin bitince bir depo hediye, bir de rozet */
+ if(g.fuel<=0&&!g.crashed&&C.id==='devran'&&!SAVE.devrimRozet&&g.outT>.6){SAVE.devrimRozet=1;save();g.fuel=1;g.outT=0;pop(T('devrim'),'#ffd34d');setTimeout(()=>pop(T('devrimAlt'),'#fff2c4'),1500);blip(392,784,.35,'triangle',.1);setTimeout(()=>blip(523,1046,.4,'triangle',.1),180);}
  if(g.fuel<=0&&!g.crashed){g.outT+=fdt;if(spd<25&&g.outT>1.2||g.outT>14){g.crashed=1;g.crashT=.6;g.reason=C.def.fuel==='ev'?'rCharge':'rFuel';}}
  if(g.fuel<.2&&g.fuel>0&&g.t-g.lowWarn>2.5){g.lowWarn=g.t;blip(880,660,.15,'square',.04);}
  // air & flips
@@ -1032,7 +1034,7 @@ function renderMenu(){
   CARS.forEach(car=>{const own=!!SAVE.cars[car.id];const d=document.createElement('div');d.className='card'+(SAVE.sel.car===car.id?' sel':'');
    const cvv=document.createElement('canvas');cvv.width=400;cvv.height=208;cvv.style.background='linear-gradient(180deg,#2b405f,#16223a)';d.appendChild(cvv);thumbCar(cvv,car);
    const sp=spec(car);const bar=(lab,v)=>`<div class="stat"><span>${lab}</span><div class="bar"><i style="width:${clamp(v,0.05,1)*100}%"></i></div></div>`;
-   const ci=document.createElement('div');ci.className='ci';ci.innerHTML=`<div class="nm">${car.name} <span style="font-size:13px;color:#8a4a1c">${car.year}</span></div><div class="sb">${car.desc[L]}</div>`+
+   const ci=document.createElement('div');ci.className='ci';ci.innerHTML=`<div class="nm">${car.name} <span style="font-size:13px;color:#8a4a1c">${car.year}</span>${car.id==='devran'&&SAVE.devrimRozet?'<span title="29 Ekim 1961" style="margin-left:6px;display:inline-block;background:#c8102e;color:#fff;font:700 10px Rubik;padding:2px 6px;border-radius:9px;vertical-align:2px">★&#xFE0E; 29.10</span>':''}</div><div class="sb">${car.desc[L]}</div>`+
     bar(T('power'),sp.F*(car.wheels.filter(w=>w.drive).length)/car.m/2200)+bar(T('speed'),sp.spin*car.wheels[0].r/1500)+bar(T('grip'),sp.mu/1.6)+bar(car.fuel==='ev'?T('battery'):T('tank'),sp.tank/50);
    const b=document.createElement('button');b.style.cssText='margin-top:7px;width:100%;font-size:14px;padding:7px';
    if(own){b.className='btn'+(SAVE.sel.car===car.id?' dis':'');b.textContent=SAVE.sel.car===car.id?T('selected'):T('select');}else{b.className='btn gold'+(SAVE.coins<car.price?' dis':'');b.textContent=`${T('buy')} · ${fmt(car.price)}`;}
