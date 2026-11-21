@@ -1,4 +1,4 @@
-A physics-based hill climbing race: 1923 levels, 10 stages, 5 legendary rides. Hit the gas, conquer the slopes, keep your balance in the air and complete each level’s goal without flipping over!
+A physics-based hill climbing race: 1923 levels, 10 stages, 11 legendary rides. Hit the gas, conquer the slopes, keep your balance in the air and complete each level’s goal without flipping over!
 
 Keloğlan is at the wheel. The road runs from the fairy chimneys of Cappadocia to Pamukkale, the Black Sea highlands, Mount Ararat, Nemrut and Lake Van, then on to the Kazakh steppe, Lake Issyk-Kul, Samarkand and the Altai Mountains.
 
@@ -12,10 +12,15 @@ Cappadocia, Pamukkale, Black Sea Highlands, Foot of Mount Ararat, Mount Nemrut, 
 
 VEHICLES
 • Devran 61: balanced and sturdy
+• Marat 124: the first people’s car off the Bursa line
 • Şahan 131: strong and steady
 • Taros 12: Anatolia’s white legend, tough underbody
 • Anadal A1: light fibreglass body, nimble and quick
+• Egga: ten years the leader of the roads, a balanced sedan
 • Toprak 55: slow, but climbs anything
+• Bücek 75: a doorless, light beach roamer
+• Kersan Jast: the new-generation dolmuş, long and steady
+• Anadal STK-16: the super monster, a fibreglass sports coupé
 • Tagg T10: electric, silent, instant torque
 
 ROADSIDE FRIENDS

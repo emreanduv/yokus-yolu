@@ -1,4 +1,4 @@
-Fizik tabanlı tepe tırmanma yarışı: 1923 bölüm, 10 sahne, 6 efsane araç. Gaza bas, yokuşları tırman, havada dengeni koru ve devrilmeden bölümün görevini tamamla!
+Fizik tabanlı tepe tırmanma yarışı: 1923 bölüm, 10 sahne, 11 efsane araç. Gaza bas, yokuşları tırman, havada dengeni koru ve devrilmeden bölümün görevini tamamla!
 
 Direksiyonda Keloğlan var. Kapadokya’nın peri bacalarından başlayıp Pamukkale’ye, Karadeniz yaylalarına, Ağrı Dağı’na, Nemrut’a ve Van Gölü’ne; oradan Kazak bozkırına, Issık Göl’e, Semerkant’a ve Altay Dağları’na uzanan bir yol.
 
@@ -12,10 +12,15 @@ Kapadokya, Pamukkale, Karadeniz Yaylası, Ağrı Dağı Eteği, Nemrut Dağı, V
 
 ARAÇLAR
 • Devran 61: dengeli ve sağlam
+• Marat 124: Bursa bandından çıkan ilk halk otomobili
 • Şahan 131: güçlü ve kararlı
 • Taros 12: Anadolu’nun beyaz efsanesi, sağlam alt takım
 • Anadal A1: hafif fiber gövde, çevik ve hızlı
+• Egga: on yıl yolların lideri, dengeli sedan
 • Toprak 55: yavaş ama her yokuşu söker
+• Bücek 75: kapısız, hafif sahil gezgini
+• Kersan Jast: dolmuşun yeni nesli, uzun ve dimdik
+• Anadal STK-16: süper canavar, fiber gövdeli spor coupé
 • Tagg T10: elektrikli, sessiz, anında tork
 
 YOL ARKADAŞLARI

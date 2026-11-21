@@ -270,7 +270,7 @@ const TX={
   cFuelT:'Fuel running low',cFuel:'Grab the fuel cans on the road to refill.',cChargeT:'Charge running low',cCharge:'Grab the green charge cells on the road.',
   cCoinT:'Akçe',cCoin:'Spend akçe in the garage to upgrade, and to unlock vehicles and stages.'}
 };
-const VERSION='1.0.1';
+const VERSION='1.0.2';
 const HELP={tr:[['1923 bölüm','Kapadokya’dan Altaylar’a 10 sahne, 1923 bölüm. Her bölümün bir görevi var: mesafe, akçe, takla, uçuş ya da bidonsuz yol. Hızlı bitir, üç yıldız al. İlk 10 bölüm ücretsiz; devamı Tam Sürüm ile.'],['Serbest sürüş','Açtığın sahnelerde görevsiz sür, rekorunu kır.'],['Gaz ve fren','Sağdaki GAZ pedalı ileri götürür. Soldaki FREN yavaşlatır, durunca geri vitese takar.'],['Havada denge','Havadayken GAZ aracı geriye, FREN öne yatırır. Tekerleklerin üstüne inmeye çalış.'],['Kafana dikkat','Keloğlan’ın başı, yani aracın tavanı yere değerse yolculuk biter.'],['Yakıt ve şarj','Yolda benzin bidonları var (Tagg T10 için yeşil şarj hücreleri). Bitmeden topla; yakıt biterse araç durur.'],['Akçe ve garaj','Akçeleri topla. Garajda motor, süspansiyon, lastik ve depoyu geliştir; yeni araç ve sahne aç.'],['Bonuslar','Havada tam tur takla ve uzun uçuşlar ekstra akçe kazandırır.'],['Hedef 1923 m','Her sahnenin hedefi 1923 metre. Ulaşınca 1923 akçe kazanırsın ve bir sonraki sahne açılır.']],
  en:[['1923 levels','10 stages and 1923 levels from Cappadocia to the Altai. Every level has a goal: distance, akçe, flips, airtime or a road without fuel cans. Finish fast for three stars. The first 10 levels are free; the rest come with the Full Version.'],['Free ride','Drive without a goal on stages you have opened and beat your record.'],['Gas and brake','The GAS pedal on the right drives you forward. BRAKE on the left slows you down and reverses once stopped.'],['Balance in the air','In the air, GAS tilts the car back and BRAKE tilts it forward. Try to land on your wheels.'],['Mind your head','If Keloğlan’s head, the car’s roof, touches the ground, the ride is over.'],['Fuel and charge','There are fuel cans on the road (green charge cells for the Tagg T10). Grab them before you run dry.'],['Akçe and garage','Collect akçe. Upgrade engine, suspension, tires and tank in the garage; unlock vehicles and stages.'],['Bonuses','Full flips in the air and long jumps earn extra akçe.'],['Goal 1923 m','Every stage’s goal is 1923 metres. Reach it to earn 1923 akçe and unlock the next stage.']]};
 const KEYS={tr:[['D / → / W / Boşluk','Gaz'],['A / ← / S','Fren / geri'],['P / Esc','Mola'],['Enter','Yola çık']],en:[['D / → / W / Space','Gas'],['A / ← / S','Brake / reverse'],['P / Esc','Pause'],['Enter','Hit the road']]};
@@ -360,6 +360,10 @@ const CARS=[
   m:1,I:2600,F:520,spin:42,k:75,dmp:6,mu:1,air:5.2,tank:24,
   wheels:[{ax:-50,ay:-22,r:21,drive:1,m:.15},{ax:52,ay:-22,r:21,drive:1,m:.15}],
   hull:[[-84,0],[-82,-12],[86,-4],[86,-12],[-50,12],[32,12],[-28,35,1],[-8,37,1],[12,35,1]],head:[-12,20]},
+ {id:'marat',name:'Marat 124',year:1971,desc:{tr:'Bursa bandından çıkan ilk halk otomobili. Sırayla beklenen, babadan oğula kalan.',en:'The first people\'s car off the Bursa line. Queued for, then handed down.'},price:2500,fuel:'gas',
+  m:.95,I:2500,F:540,spin:44,k:72,dmp:6,mu:1,air:5.4,tank:24,
+  wheels:[{ax:-50,ay:-22,r:21,drive:1,m:.15},{ax:52,ay:-22,r:21,drive:1,m:.15}],
+  hull:[[-82,0],[-80,-12],[82,-2],[82,-12],[-52,12],[30,12],[-36,34,1],[-10,36,1],[12,34,1]],head:[-12,20]},
  {id:'sahan',name:'Şahan 131',year:1981,desc:{tr:'Seksenlerin köşeli efsanesi. Güçlü ve kararlı.',en:'The boxy legend of the eighties. Strong and steady.'},price:4000,fuel:'gas',
   m:1,I:2600,F:600,spin:46,k:85,dmp:6.5,mu:1.05,air:5.5,tank:26,
   wheels:[{ax:-50,ay:-22,r:21,drive:1,m:.15},{ax:52,ay:-22,r:21,drive:1,m:.15}],
@@ -372,10 +376,26 @@ const CARS=[
   m:.85,I:2100,F:500,spin:54,k:70,dmp:5.5,mu:.98,air:6.4,tank:22,
   wheels:[{ax:-48,ay:-21,r:20,drive:1,m:.14},{ax:50,ay:-21,r:20,drive:1,m:.14}],
   hull:[[-82,0],[-80,-12],[85,-4],[85,-12],[-54,12],[28,12],[-26,31,1],[-6,32,1],[6,31,1]],head:[-12,17]},
+ {id:'egga',name:'Egga',year:2015,desc:{tr:'On yıl yolların lideri. Bursa\'dan dünyaya; geniş bagaj, dengeli sürüş.',en:'Ten years the leader of the roads. Built in Bursa; roomy and balanced.'},price:10000,fuel:'gas',
+  m:1.05,I:2700,F:640,spin:46,k:84,dmp:7,mu:1.1,air:5.4,tank:30,
+  wheels:[{ax:-50,ay:-23,r:22,drive:1,m:.15},{ax:52,ay:-23,r:22,drive:1,m:.15}],
+  hull:[[-84,0],[-84,-14],[88,-4],[88,-12],[-50,13],[34,13],[-36,39,1],[-6,41,1],[12,39,1]],head:[-12,21]},
  {id:'toprak',name:'Toprak 55',year:1975,desc:{tr:'Tarlanın hakimi. Yavaş ama her yokuşu söker.',en:'Lord of the fields. Slow, but climbs anything.'},price:12000,fuel:'gas',
   m:1.25,I:3300,F:1450,spin:17,k:95,dmp:7,mu:1.35,air:3.6,tank:30,
   wheels:[{ax:-34,ay:-14,r:34,drive:1,m:.22},{ax:50,ay:-30,r:18,drive:0,m:.12}],
   hull:[[-62,-6],[78,-8],[78,10],[-52,72,1],[-14,72,1],[-30,48,1],[60,18]],head:[-30,46]},
+ {id:'bucek',name:'Bücek 75',year:1975,desc:{tr:'Sahil kentlerinin neşeli gezgini. Kapısız, hafif, her kumsala çıkar.',en:'The cheerful coastal roamer. Doorless, light, ready for any beach.'},price:15000,fuel:'gas',
+  m:.9,I:2900,F:420,spin:48,k:70,dmp:6.4,mu:1.12,air:4.8,tank:20,
+  wheels:[{ax:-46,ay:-24,r:22,drive:1,m:.16},{ax:48,ay:-24,r:22,drive:1,m:.16}],
+  hull:[[-74,-2],[-72,-12],[78,-2],[78,-12],[-44,14],[30,14],[-48,46,1],[-16,46,1],[-26,33,1]],head:[-26,24]},
+ {id:'kersan',name:'Kersan Jast',year:2013,desc:{tr:'Dolmuşun yeni nesli. Uzun, ağır, dimdik; yokuşta herkesi taşır.',en:'The new generation of the dolmuş. Long, heavy and steady; carries everyone uphill.'},price:18000,fuel:'gas',
+  m:1.4,I:4200,F:780,spin:30,k:92,dmp:7.5,mu:1.06,air:3.8,tank:40,
+  wheels:[{ax:-56,ay:-21,r:20,drive:1,m:.16},{ax:58,ay:-21,r:20,drive:1,m:.16}],
+  hull:[[-88,0],[-88,-12],[90,-4],[90,-12],[-88,58],[88,14],[-60,64,1],[0,64,1],[50,64,1]],head:[42,46]},
+ {id:'stk',name:'Anadal STK-16',year:1973,desc:{tr:'Halkın taktığı adla süper canavar. Fiber gövdeli spor coupé, ralli yollarının gözdesi.',en:'The super monster, as people called it. A fibreglass coupé, darling of the rally roads.'},price:20000,fuel:'gas',
+  m:.9,I:2200,F:760,spin:50,k:78,dmp:6.2,mu:1,air:5.8,tank:22,
+  wheels:[{ax:-48,ay:-20,r:20,drive:1,m:.14},{ax:50,ay:-20,r:20,drive:1,m:.14}],
+  hull:[[-82,0],[-82,-12],[88,-2],[88,-10],[-50,12],[24,12],[-30,28,1],[-10,31,1],[6,30,1]],head:[-12,15]},
  {id:'tagg',name:'Tagg T10',year:2023,desc:{tr:'Yüzüncü yılın elektriklisi. Sessiz, anında tork.',en:'The centenary EV. Silent, instant torque.'},price:25000,fuel:'ev',
   m:1.1,I:3000,F:720,spin:50,k:90,dmp:7,mu:1.12,air:5.6,tank:32,
   wheels:[{ax:-52,ay:-26,r:24,drive:1,m:.16},{ax:54,ay:-26,r:24,drive:1,m:.16}],
@@ -637,6 +657,43 @@ const BODY={
  anadal:{col:['#ffd679','#e09a1f','#7a4706'],path(c){c.moveTo(-80,20);c.lineTo(-82,-2);c.quadraticCurveTo(-80,-8,-66,-10);c.lineTo(-56,-12);c.quadraticCurveTo(-36,-32,-18,-32);c.lineTo(4,-32);c.quadraticCurveTo(18,-31,30,-12);c.lineTo(72,-7);c.quadraticCurveTo(84,-5,85,4);c.lineTo(85,12);c.quadraticCurveTo(84,19,78,20);arcs(c,50,-48,27,24,20);c.lineTo(-80,20);c.closePath();},
   win(c){c.moveTo(-50,-13);c.lineTo(-30,-28);c.lineTo(3,-28);c.lineTo(23,-13);c.closePath();},pillar:[-8,-5],
   deco(c){c.strokeStyle='#2b2b2b';c.lineWidth=1.5;c.beginPath();c.moveTo(-78,0);c.lineTo(82,0);c.stroke();c.fillStyle='#d8dde3';c.fillRect(-84,10,9,4);c.fillRect(78,9,8,5);glow(c,81,-1,3.5,'#fff3c0');c.fillStyle='#d62828';c.fillRect(-83,-6,3,6);}},
+ marat:{col:['#f6ead0','#d2bf92','#6e5d36'],path(c){c.moveTo(-80,20);c.lineTo(-81,-8);c.quadraticCurveTo(-80,-11,-74,-11);c.lineTo(-60,-12);c.lineTo(-45,-34);c.quadraticCurveTo(-43,-35,-40,-35);c.lineTo(8,-35);c.quadraticCurveTo(11,-35,13,-33);c.lineTo(28,-13);c.lineTo(78,-9);c.quadraticCurveTo(82,-9,82,-5);c.lineTo(82,14);c.quadraticCurveTo(81,21,78,22);arcs(c,52,-50,29,26,22);c.lineTo(-80,22);c.closePath();},
+  win(c){c.moveTo(-55,-13);c.lineTo(-41,-31);c.lineTo(8,-31);c.lineTo(23,-13);c.closePath();},pillar:[-12,-8],
+  deco(c){c.fillStyle='#dfe3e8';c.fillRect(-79,-1,159,2);c.fillRect(-85,11,10,4);c.fillRect(79,10,8,4);c.fillStyle='#9aa1a8';c.fillRect(-85,14,10,1.5);c.fillRect(79,13,8,1.5);
+   c.fillStyle='#2b2b2b';c.fillRect(79,-7,4,10);c.fillStyle='#eef0f2';c.beginPath();c.arc(81,-3,3.2,0,7);c.fill();glow(c,82,-3,3.2,'#fff1b8');
+   c.fillStyle='#c0262d';rr(c,-83,-9,3.5,7,1);c.fill();c.fillStyle='#f29b1f';c.fillRect(-83,-2,3.5,2.5);c.fillStyle='#8a8f95';c.fillRect(-2,-7,5,1.5);c.fillRect(-38,-7,5,1.5);}},
+ egga:{col:['#6d97e0','#2353a8','#0b2350'],path(c){c.moveTo(-84,18);c.lineTo(-86,-6);c.quadraticCurveTo(-86,-14,-78,-15);c.lineTo(-64,-16);c.lineTo(-44,-38);c.quadraticCurveTo(-40,-41,-32,-41);c.lineTo(4,-41);c.quadraticCurveTo(10,-40,14,-36);c.lineTo(36,-15);c.lineTo(74,-9);c.quadraticCurveTo(87,-6,88,4);c.lineTo(88,14);c.quadraticCurveTo(87,21,80,22);arcs(c,52,-50,30,27,22);c.lineTo(-84,22);c.closePath();},
+  win(c){c.moveTo(-60,-17);c.lineTo(-42,-36);c.lineTo(4,-36);c.lineTo(30,-17);c.closePath();},pillar:[-14,-9],
+  deco(c){c.fillStyle='#14171b';c.beginPath();c.moveTo(-82,12);c.lineTo(86,12);c.lineTo(85,18);c.lineTo(-82,18);c.closePath();c.fill();
+   c.strokeStyle='rgba(255,255,255,.45)';c.lineWidth=1.2;c.beginPath();c.moveTo(-70,-4);c.quadraticCurveTo(0,-8,72,-4);c.stroke();
+   c.strokeStyle='#eaf6ff';c.lineWidth=2.4;c.beginPath();c.moveTo(70,-9);c.lineTo(86,-5);c.stroke();glow(c,84,-5,2.6,'#e6f4ff');
+   c.fillStyle='#14171b';rr(c,78,1,9,6,1.5);c.fill();c.fillStyle='#c9ced4';c.fillRect(79,3,7,1);
+   c.strokeStyle='#d21f2b';c.lineWidth=2.6;c.beginPath();c.moveTo(-85,-12);c.lineTo(-74,-13);c.stroke();
+   c.fillStyle='#c9ced4';c.fillRect(-4,-9,6,1.6);c.fillRect(-40,-9,6,1.6);c.fillStyle='#14171b';c.beginPath();c.moveTo(-20,-41);c.lineTo(-14,-46);c.lineTo(-12,-41);c.closePath();c.fill();}},
+ bucek:{col:['#cdf07a','#79ae2c','#2f5410'],path(c){c.moveTo(-72,14);c.lineTo(-74,-6);c.quadraticCurveTo(-73,-11,-66,-11);c.lineTo(-56,-12);c.lineTo(18,-12);c.lineTo(30,-18);c.lineTo(66,-14);c.quadraticCurveTo(78,-12,78,0);c.lineTo(76,14);arcs(c,48,-46,31,27,14);c.lineTo(-72,14);c.closePath();},
+  win(c){c.moveTo(19,-12);c.lineTo(27,-38);c.lineTo(30,-38);c.lineTo(23,-13);c.closePath();},pillar:[0,0],
+  deco(c){c.strokeStyle='#3b4148';c.lineWidth=4;c.lineJoin='round';c.beginPath();c.moveTo(-52,-11);c.lineTo(-48,-46);c.lineTo(-17,-46);c.lineTo(-13,-11);c.stroke();c.strokeStyle='rgba(255,255,255,.35)';c.lineWidth=1;c.beginPath();c.moveTo(-48,-45);c.lineTo(-18,-45);c.stroke();
+   c.strokeStyle='#2c3036';c.lineWidth=2;c.beginPath();c.moveTo(27,-38);c.lineTo(31,-38);c.stroke();
+   c.fillStyle='#1b1d20';c.beginPath();c.arc(-74,-20,12,0,7);c.fill();c.fillStyle='#8b8f94';c.beginPath();c.arc(-74,-20,6,0,7);c.fill();
+   c.fillStyle='#2f5410';c.fillRect(-56,-12,72,3);c.fillStyle='#e9ecef';c.fillRect(70,4,10,5);c.fillRect(-77,6,8,5);
+   c.fillStyle='#ffe9a8';c.beginPath();c.arc(72,-8,4,0,7);c.fill();glow(c,74,-8,3.4,'#fff3c0');c.fillStyle='#d62828';c.fillRect(-74,-4,3,6);}},
+ kersan:{col:['#ffe96f','#f2bf1d','#8a6408'],path(c){c.moveTo(-88,18);c.lineTo(-88,-58);c.quadraticCurveTo(-88,-64,-80,-64);c.lineTo(52,-64);c.quadraticCurveTo(62,-63,68,-52);c.lineTo(84,-18);c.quadraticCurveTo(90,-12,90,-4);c.lineTo(90,14);c.quadraticCurveTo(89,20,84,21);arcs(c,58,-56,28,25,21);c.lineTo(-88,21);c.closePath();},
+  win(c){c.moveTo(-80,-36);c.lineTo(-80,-56);c.lineTo(56,-56);c.lineTo(64,-49);c.lineTo(80,-20);c.lineTo(60,-20);c.lineTo(56,-36);c.closePath();},pillar:[22,27],
+  deco(c){c.fillStyle='#f2bf1d';for(const x of [-48,-14])c.fillRect(x,-57,5,22);
+   c.fillStyle='#1d2024';c.fillRect(-88,-30,178,7);c.fillStyle='#ffffff';c.fillRect(-88,-23,178,2);
+   c.strokeStyle='rgba(0,0,0,.35)';c.lineWidth=1.2;c.strokeRect(-8,-34,30,50);
+   c.fillStyle='#1d2024';c.beginPath();c.moveTo(-88,8);c.lineTo(90,8);c.lineTo(90,18);c.lineTo(-88,18);c.closePath();c.fill();
+   c.fillStyle='#eef1f4';rr(c,84,-12,6,8,1.5);c.fill();glow(c,88,-8,3.4,'#fff4c4');c.fillStyle='#f29b1f';c.fillRect(86,-3,4,3);
+   c.fillStyle='#b81d22';rr(c,-90,-20,4,14,1);c.fill();c.fillStyle='#2a2d31';c.fillRect(66,-50,3,10);c.fillRect(62,-44,7,3);
+   c.fillStyle='rgba(255,255,255,.18)';c.fillRect(-84,-63,130,3);}},
+ stk:{col:['#fff27a','#f0b400','#7a5200'],path(c){c.moveTo(-82,18);c.lineTo(-84,-4);c.quadraticCurveTo(-83,-12,-74,-13);c.lineTo(-60,-14);c.quadraticCurveTo(-36,-30,-14,-31);c.lineTo(0,-31);c.quadraticCurveTo(10,-30,22,-14);c.lineTo(74,-8);c.quadraticCurveTo(87,-6,88,2);c.lineTo(88,12);c.quadraticCurveTo(87,19,80,20);arcs(c,50,-48,27,25,20);c.lineTo(-82,20);c.closePath();},
+  win(c){c.moveTo(-50,-15);c.lineTo(-28,-26);c.lineTo(-1,-27);c.lineTo(15,-14);c.closePath();},pillar:[-10,-7],
+  deco(c){c.fillStyle='#16181b';c.beginPath();c.moveTo(-82,4);c.lineTo(88,4);c.lineTo(88,8);c.lineTo(-82,8);c.closePath();c.fill();
+   c.strokeStyle='#16181b';c.lineWidth=1.4;for(let i=0;i<4;i++){c.beginPath();c.moveTo(-58+i*5,-15-i*3.4);c.lineTo(-52+i*5,-17-i*3.4);c.stroke();}
+   c.fillStyle='#16181b';c.fillRect(30,-5,14,2);c.fillRect(30,-1,14,2);c.fillRect(30,3,14,1);
+   c.fillStyle='#16181b';c.beginPath();c.moveTo(70,16);c.lineTo(92,14);c.lineTo(92,18);c.lineTo(70,20);c.closePath();c.fill();
+   c.fillStyle='#eef0f2';c.beginPath();c.arc(83,-3,3.4,0,7);c.fill();glow(c,84,-3,3.4,'#fff1b8');c.fillStyle='#c0262d';rr(c,-84,-9,4,8,1);c.fill();
+   c.fillStyle='#d7dde3';c.fillRect(-86,10,8,4);}},
  tagg:{col:['#7aa3b0','#35606e','#13262d'],path(c){c.moveTo(-80,14);c.lineTo(-82,-18);c.quadraticCurveTo(-80,-26,-70,-28);c.lineTo(-60,-30);c.lineTo(-46,-46);c.quadraticCurveTo(-40,-49,-30,-49);c.lineTo(14,-49);c.quadraticCurveTo(22,-48,28,-41);c.lineTo(42,-22);c.lineTo(74,-16);c.quadraticCurveTo(86,-14,86,-2);c.lineTo(86,10);c.lineTo(82,20);arcs(c,54,-52,33,29,20);c.lineTo(-80,20);c.closePath();},
   win(c){c.moveTo(-56,-28);c.lineTo(-43,-44);c.lineTo(12,-44);c.lineTo(36,-23);c.closePath();},pillar:[-8,-3],
   deco(c){c.fillStyle='#14181b';c.beginPath();c.moveTo(-82,6);c.lineTo(86,4);c.lineTo(84,20);c.lineTo(-80,20);c.closePath();c.fill();
@@ -672,12 +729,12 @@ function drawCarBody(c,car){
   c.fillStyle='#2b2b2b';c.fillRect(-14,12,92,6);glow(c,74,-10,3,'#fff1b8');
   c.fillStyle='rgba(255,255,255,.85)';c.font='800 7px "Barlow Condensed"';c.fillText('TOPRAK 55',20,6);return;}
  const b=BODY[id];
- const AR={devran:[52,-50,29,26],taros:[52,-50,29,26],sahan:[52,-50,29,26],anadal:[50,-48,27,24],tagg:[54,-52,33,29]}[id];c.fillStyle='#0d0e10';for(const x of [AR[0],AR[1]]){c.beginPath();c.arc(x,AR[2],AR[3]-.5,Math.PI,0);c.lineTo(x+AR[3]-.5,AR[2]-2);c.fill();}
+ const AR={marat:[52,-50,29,26],egga:[52,-50,30,27],bucek:[48,-46,31,27],kersan:[58,-56,28,25],stk:[50,-48,27,25],devran:[52,-50,29,26],taros:[52,-50,29,26],sahan:[52,-50,29,26],anadal:[50,-48,27,24],tagg:[54,-52,33,29]}[id];c.fillStyle='#0d0e10';for(const x of [AR[0],AR[1]]){c.beginPath();c.arc(x,AR[2],AR[3]-.5,Math.PI,0);c.lineTo(x+AR[3]-.5,AR[2]-2);c.fill();}
  keloglan(c,car.head[0],-car.head[1]);
  c.beginPath();b.path(c);b.win(c);
  const g=c.createLinearGradient(0,-50,0,24);g.addColorStop(0,b.col[0]);g.addColorStop(.45,b.col[1]);g.addColorStop(1,b.col[2]);c.fillStyle=g;c.fill('evenodd');
  c.save();c.beginPath();b.path(c);c.clip();c.fillStyle='rgba(255,255,255,.16)';c.beginPath();c.ellipse(-10,-30,70,10,0,0,7);c.fill();c.restore();
- c.fillStyle=b.col[1];c.fillRect(b.pillar[0],-40,b.pillar[1]-b.pillar[0],30);
+ c.save();c.beginPath();b.path(c);c.clip();c.fillStyle=b.col[1];c.fillRect(b.pillar[0],-40,b.pillar[1]-b.pillar[0],30);c.restore();
  c.beginPath();b.win(c);c.fillStyle='rgba(150,200,235,.22)';c.fill();c.save();c.clip();c.fillStyle='rgba(255,255,255,.35)';c.beginPath();c.moveTo(-10,-40);c.lineTo(0,-40);c.lineTo(-24,0);c.lineTo(-34,0);c.closePath();c.fill();c.restore();
  b.deco(c);}
 function drawWheel(c,x,y,r,th,rim,big){c.save();c.translate(x,y);c.rotate(th);
@@ -686,7 +743,7 @@ function drawWheel(c,x,y,r,th,rim,big){c.save();c.translate(x,y);c.rotate(th);
  const rg=c.createRadialGradient(-r*.15,-r*.15,1,0,0,r*.6);rg.addColorStop(0,rim[0]);rg.addColorStop(1,rim[1]);c.fillStyle=rg;c.beginPath();c.arc(0,0,r*.58,0,7);c.fill();
  c.strokeStyle=rim[2];c.lineWidth=r*.1;for(let i=0;i<5;i++){c.beginPath();c.moveTo(0,0);const a=i/5*Math.PI*2;c.lineTo(Math.cos(a)*r*.5,Math.sin(a)*r*.5);c.stroke();}
  c.fillStyle='#2b2b2b';c.beginPath();c.arc(0,0,r*.14,0,7);c.fill();c.fillStyle='rgba(255,255,255,.5)';c.beginPath();c.arc(-r*.04,-r*.05,r*.05,0,7);c.fill();c.restore();}
-const RIMS={taros:['#f4f6f8','#a7afb7','#d3d9de'],devran:['#ffffff','#9aa3ad','#d7dde3'],sahan:['#f1f3f5','#8d969f','#c9cfd5'],anadal:['#fff','#b9a07a','#e6d6b8'],toprak:['#ffe27a','#d39b12','#a77408'],tagg:['#e9eef1','#55606a','#262d33']};
+const RIMS={marat:['#f6f7f8','#a9b0b7','#d6dbe0'],egga:['#d7dce1','#4d555d','#a9b1b8'],bucek:['#fafafa','#c7c7c7','#8b8b8b'],kersan:['#ececec','#9a9a9a','#cfcfcf'],stk:['#e6e6e6','#3a3a3a','#bdbdbd'],taros:['#f4f6f8','#a7afb7','#d3d9de'],devran:['#ffffff','#9aa3ad','#d7dde3'],sahan:['#f1f3f5','#8d969f','#c9cfd5'],anadal:['#fff','#b9a07a','#e6d6b8'],toprak:['#ffe27a','#d39b12','#a77408'],tagg:['#e9eef1','#55606a','#262d33']};
 
 /* ================= AUDIO ================= */
 let AC=null,eng=null;
