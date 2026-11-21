@@ -932,6 +932,7 @@ function thumbCar(cv,car){const c=cv.getContext('2d'),w=cv.width,h=cv.height;c.c
  const sp=car.wheels;c.strokeStyle='#2a2d33';c.lineWidth=5;sp.forEach(wd=>{c.beginPath();c.moveTo(wd.ax,-wd.ay);c.lineTo(wd.ax,-wd.ay+7);c.stroke();});
  drawCarBody(c,{id:car.id,head:car.head});sp.forEach(wd=>drawWheel(c,wd.ax,-wd.ay+7,wd.r,.3,RIMS[car.id],car.id==='toprak'&&wd.r>30));c.restore();}
 const starStr=n=>'★'.repeat(n)+'<i>'+'★'.repeat(3-n)+'</i>';
+const MSCROLL={};let _lastTab=null;
 function renderMenu(){
  const nx=nextBolum();
  $('mCoins').textContent=fmt(SAVE.coins);$('tBol').textContent=T('bolumler');$('tStage').textContent=T('free');$('tCar').textContent=T('car');$('tGar').textContent=T('garage');
@@ -940,7 +941,11 @@ function renderMenu(){
  $('goBtn').textContent=tab==='stage'?T('freeGo'):(nx>BOLUM_N?T('freeGo'):T('contB').replace('{n}',nx));
  drawFullChip();
  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.t===tab));
- const ct=$('content');ct.innerHTML='';
+ const ct=$('content');
+ /* Menü yerini korur: sekmeye/karta dokununca liste başa atlamaz (Emre'nin kuralı) */
+ if(_lastTab){const w0=ct.querySelector('.cards,.grid,.bgrid');MSCROLL[_lastTab]={y:ct.scrollTop,x:w0?w0.scrollLeft:0,cx:(ct.querySelector('.chips')||{}).scrollLeft||0};}
+ const _keep=MSCROLL[tab];_lastTab=tab;
+ ct.innerHTML='';
  if(tab==='bolum'){
   if(bolStage===null)bolStage=bolum(Math.min(nx,BOLUM_N)).s;
   const chips=document.createElement('div');chips.className='chips';
@@ -988,6 +993,7 @@ function renderMenu(){
    const b=document.createElement('button');b.className='btn gold'+(cost===null||SAVE.coins<cost?' dis':'');b.style.cssText='font-size:14px;padding:7px 12px;min-width:92px';b.textContent=cost===null?T('max'):fmt(cost);
    b.onclick=()=>{if(cost!==null&&SAVE.coins>=cost){SAVE.coins-=cost;u[k]++;save();blip(400,900,.2,'triangle',.08);renderMenu();}};r.appendChild(b);tbl.appendChild(r);});
   ct.appendChild(tbl);}
+ if(_keep)setTimeout(()=>{ct.scrollTop=_keep.y;const w=ct.querySelector('.cards,.grid,.bgrid');if(w)w.scrollLeft=_keep.x;const ch=ct.querySelector('.chips');if(ch)ch.scrollLeft=_keep.cx;},0);
 }
 function toast(t){const e=$('toast');e.textContent=t;e.style.display='block';clearTimeout(toast._t);toast._t=setTimeout(()=>e.style.display='none',2600);}
 
