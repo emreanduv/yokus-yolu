@@ -7,6 +7,8 @@ on:
     workflows: ["iOS (App Store Connect / TestFlight)"]
     types: [completed]
   workflow_dispatch:
+  schedule:
+    - cron: '23 */2 * * *'   # önceki derleme beta incelemesindeyse sonrakini yeniden göndermek için
   push:
     branches: [main]
     paths: ['store/DERLEME', '.github/workflows/testflight-test.yml']

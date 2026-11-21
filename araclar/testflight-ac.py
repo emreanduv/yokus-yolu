@@ -70,6 +70,10 @@ for e in open('store/testflight-testciler.txt').read().split():
     print('testçi',e,r.status_code)
 # 7) derlemeyi gruba ver + incelemeye gönder
 post(f'/betaGroups/{gid}/relationships/builds',{'data':[{'type':'builds','id':bid}]})
-r=post('/betaAppReviewSubmissions',{'data':{'type':'betaAppReviewSubmissions','relationships':{'build':{'data':{'type':'builds','id':bid}}}}})
-print('beta incelemesi',r.status_code)
+# Aynı sürümde başka derleme beta incelemesindeyse (ANOTHER_BUILD_IN_REVIEW) o bitene kadar bekle ve yeniden dene
+for den in range(13):
+    r=post('/betaAppReviewSubmissions',{'data':{'type':'betaAppReviewSubmissions','relationships':{'build':{'data':{'type':'builds','id':bid}}}}})
+    print('beta incelemesi',r.status_code)
+    if r.status_code<400 or 'ANOTHER_BUILD_IN_REVIEW' not in r.text: break
+    print('önceki derleme incelemede; 5 dk sonra yeniden…'); time.sleep(300)
 print('✓ Bitti: derleme',build['attributes']['version'],'→',GRUP)
