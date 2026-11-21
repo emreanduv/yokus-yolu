@@ -7,7 +7,7 @@ KOK=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SIZES={'iphone69':(956,440,3),'ipad13':(1376,1032,2),'play':(960,540,2)}
 CAP={'tr':['1923 bölüm: Kapadokya’dan Altaylar’a','Van Gölü’nde Süphan’a karşı tırman','Semerkant’ın mavi kubbeleri','Karlı Ağrı Dağı’nda kaygan yokuşlar','5 efsane araç: Devran 61’den Tagg T10’a','Her bölüm bir görev, üç yıldız'],
      'en':['1923 levels: Cappadocia to the Altai','Climb beside Lake Van and Mount Süphan','The blue domes of Samarkand','Slippery climbs at snowy Mount Ararat','5 legendary rides, Devran 61 to Tagg T10','Every level a goal, three stars']}
-SCENES=[(6,'devran',420,'g'),(1000,'anadal',430,'g'),(1610,'sahan',600,'g'),(700,'toprak',800,'g'),(1850,'tagg',430,'g'),(None,None,0,'menu')]
+SCENES=[(6,'devran',420,'g'),(1000,'anadal',430,'g'),(1610,'taros',600,'g'),(700,'toprak',800,'g'),(1850,'tagg',430,'g'),(None,None,0,'menu')]
 SIM=r'''([n,car,steps,mode])=>{SAVE.coins=12450;Object.assign(SAVE.cars,{sahan:1,anadal:1,toprak:1,tagg:1});SAVE.tips={gas:1,air:1,fuel:1,coin:1,mission:1};SAVE.full=1;SAVE.done={};
  for(let k=1;k<n;k++)SAVE.done[k]=1+(k%3?2:1);SAVE.sel.car=car;SAVE.muted=true;RUN={mode:'bolum',n};startRun();input.gas=1;
  for(let i=0;i<steps;i++){update(1/60);if(game.crashed)break;}

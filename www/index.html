@@ -364,6 +364,10 @@ const CARS=[
   m:1,I:2600,F:600,spin:46,k:85,dmp:6.5,mu:1.05,air:5.5,tank:26,
   wheels:[{ax:-50,ay:-22,r:21,drive:1,m:.15},{ax:52,ay:-22,r:21,drive:1,m:.15}],
   hull:[[-82,0],[-80,-12],[82,-2],[82,-12],[-52,12],[30,12],[-38,35,1],[-10,37,1],[12,35,1]],head:[-12,20]},
+ {id:'taros',name:'Taros 12',year:1989,desc:{tr:'Anadolu\'nun beyaz efsanesi. Sağlam alt takım, her köy yolunu görmüş.',en:'Anatolia\'s white legend. A tough underbody that has seen every village road.'},price:6000,fuel:'gas',
+  m:1.05,I:2700,F:580,spin:45,k:82,dmp:7.2,mu:1.06,air:5.3,tank:28,
+  wheels:[{ax:-50,ay:-23,r:21,drive:1,m:.15},{ax:52,ay:-23,r:21,drive:1,m:.15}],
+  hull:[[-84,0],[-82,-12],[86,-4],[86,-12],[-50,12],[32,12],[-30,35,1],[-8,37,1],[12,35,1]],head:[-12,20]},
  {id:'anadal',name:'Anadal A1',year:1966,desc:{tr:'Hafif fiber gövde, çevik ve hızlı.',en:'Light fibreglass body, nimble and quick.'},price:8000,fuel:'gas',
   m:.85,I:2100,F:500,spin:54,k:70,dmp:5.5,mu:.98,air:6.4,tank:22,
   wheels:[{ax:-48,ay:-21,r:20,drive:1,m:.14},{ax:50,ay:-21,r:20,drive:1,m:.14}],
@@ -621,6 +625,15 @@ const BODY={
  sahan:{col:['#ff6b62','#c8232b','#6d0f13'],path(c){c.moveTo(-82,20);c.lineTo(-82,-10);c.lineTo(-58,-13);c.lineTo(-42,-36);c.lineTo(14,-36);c.lineTo(32,-14);c.lineTo(78,-10);c.lineTo(82,-8);c.lineTo(82,14);c.lineTo(79,22);arcs(c,52,-50,29,26,22);c.lineTo(-82,22);c.closePath();},
   win(c){c.moveTo(-54,-14);c.lineTo(-39,-32);c.lineTo(12,-32);c.lineTo(27,-14);c.closePath();},pillar:[-12,-8],
   deco(c){c.fillStyle='#1a1a1a';c.fillRect(-86,8,14,8);c.fillRect(74,8,12,8);c.fillStyle='#e6e6e6';c.fillRect(-80,-2,158,2.5);c.fillStyle='#dfe3e8';rr(c,76,-6,8,8,1.5);c.fill();glow(c,80,-2,4,'#fff3c0');c.fillStyle='#ff3b30';c.fillRect(-84,-8,4,8);}},
+ taros:{col:['#ffffff','#e4e8ec','#8f979f'],path(c){c.moveTo(-84,20);c.lineTo(-85,-4);c.quadraticCurveTo(-85,-11,-78,-12);c.lineTo(-60,-14);c.lineTo(-36,-36);c.quadraticCurveTo(-32,-38,-26,-38);c.lineTo(6,-38);c.quadraticCurveTo(11,-37,14,-34);c.lineTo(31,-14);c.lineTo(76,-9);c.quadraticCurveTo(86,-8,87,0);c.lineTo(87,14);c.quadraticCurveTo(86,21,80,22);arcs(c,52,-50,29,26,22);c.lineTo(-84,22);c.closePath();},
+  win(c){c.moveTo(-55,-15);c.lineTo(-35,-33);c.lineTo(7,-33);c.lineTo(26,-15);c.closePath();},pillar:[-13,-8],
+  deco(c){c.strokeStyle='#3a3f45';c.lineWidth=2.4;c.beginPath();c.moveTo(-83,5);c.lineTo(85,5);c.stroke();
+   c.fillStyle='#c9ced4';c.fillRect(-88,12,13,5);c.fillRect(80,11,10,6);c.fillStyle='#2a2d31';c.fillRect(-88,15,13,2);c.fillRect(80,15,10,2);
+   c.fillStyle='#1d2024';rr(c,79,-6,8,12,1.5);c.fill();c.strokeStyle='#bfc5cb';c.lineWidth=.8;for(let i=0;i<3;i++){c.beginPath();c.moveTo(80,-3+i*3.5);c.lineTo(86,-3+i*3.5);c.stroke();}
+   c.fillStyle='#eef1f4';rr(c,83,-7,4.5,6,1);c.fill();glow(c,85,-4,3.6,'#fff4c4');c.fillStyle='#f29b1f';c.fillRect(84,0,3,3);
+   c.fillStyle='#b81d22';rr(c,-86,-10,5,9,1);c.fill();c.fillStyle='#f29b1f';c.fillRect(-86,-1,5,2.5);
+   c.fillStyle='#8a9198';c.fillRect(-4,-6,6,1.6);c.fillRect(-42,-6,6,1.6);
+   c.fillStyle='#1a1c1f';c.fillRect(-70,18,4,10);}},
  anadal:{col:['#ffd679','#e09a1f','#7a4706'],path(c){c.moveTo(-80,20);c.lineTo(-82,-2);c.quadraticCurveTo(-80,-8,-66,-10);c.lineTo(-56,-12);c.quadraticCurveTo(-36,-32,-18,-32);c.lineTo(4,-32);c.quadraticCurveTo(18,-31,30,-12);c.lineTo(72,-7);c.quadraticCurveTo(84,-5,85,4);c.lineTo(85,12);c.quadraticCurveTo(84,19,78,20);arcs(c,50,-48,27,24,20);c.lineTo(-80,20);c.closePath();},
   win(c){c.moveTo(-50,-13);c.lineTo(-30,-28);c.lineTo(3,-28);c.lineTo(23,-13);c.closePath();},pillar:[-8,-5],
   deco(c){c.strokeStyle='#2b2b2b';c.lineWidth=1.5;c.beginPath();c.moveTo(-78,0);c.lineTo(82,0);c.stroke();c.fillStyle='#d8dde3';c.fillRect(-84,10,9,4);c.fillRect(78,9,8,5);glow(c,81,-1,3.5,'#fff3c0');c.fillStyle='#d62828';c.fillRect(-83,-6,3,6);}},
@@ -659,7 +672,7 @@ function drawCarBody(c,car){
   c.fillStyle='#2b2b2b';c.fillRect(-14,12,92,6);glow(c,74,-10,3,'#fff1b8');
   c.fillStyle='rgba(255,255,255,.85)';c.font='800 7px "Barlow Condensed"';c.fillText('TOPRAK 55',20,6);return;}
  const b=BODY[id];
- const AR={devran:[52,-50,29,26],sahan:[52,-50,29,26],anadal:[50,-48,27,24],tagg:[54,-52,33,29]}[id];c.fillStyle='#0d0e10';for(const x of [AR[0],AR[1]]){c.beginPath();c.arc(x,AR[2],AR[3]-.5,Math.PI,0);c.lineTo(x+AR[3]-.5,AR[2]-2);c.fill();}
+ const AR={devran:[52,-50,29,26],taros:[52,-50,29,26],sahan:[52,-50,29,26],anadal:[50,-48,27,24],tagg:[54,-52,33,29]}[id];c.fillStyle='#0d0e10';for(const x of [AR[0],AR[1]]){c.beginPath();c.arc(x,AR[2],AR[3]-.5,Math.PI,0);c.lineTo(x+AR[3]-.5,AR[2]-2);c.fill();}
  keloglan(c,car.head[0],-car.head[1]);
  c.beginPath();b.path(c);b.win(c);
  const g=c.createLinearGradient(0,-50,0,24);g.addColorStop(0,b.col[0]);g.addColorStop(.45,b.col[1]);g.addColorStop(1,b.col[2]);c.fillStyle=g;c.fill('evenodd');
@@ -673,7 +686,7 @@ function drawWheel(c,x,y,r,th,rim,big){c.save();c.translate(x,y);c.rotate(th);
  const rg=c.createRadialGradient(-r*.15,-r*.15,1,0,0,r*.6);rg.addColorStop(0,rim[0]);rg.addColorStop(1,rim[1]);c.fillStyle=rg;c.beginPath();c.arc(0,0,r*.58,0,7);c.fill();
  c.strokeStyle=rim[2];c.lineWidth=r*.1;for(let i=0;i<5;i++){c.beginPath();c.moveTo(0,0);const a=i/5*Math.PI*2;c.lineTo(Math.cos(a)*r*.5,Math.sin(a)*r*.5);c.stroke();}
  c.fillStyle='#2b2b2b';c.beginPath();c.arc(0,0,r*.14,0,7);c.fill();c.fillStyle='rgba(255,255,255,.5)';c.beginPath();c.arc(-r*.04,-r*.05,r*.05,0,7);c.fill();c.restore();}
-const RIMS={devran:['#ffffff','#9aa3ad','#d7dde3'],sahan:['#f1f3f5','#8d969f','#c9cfd5'],anadal:['#fff','#b9a07a','#e6d6b8'],toprak:['#ffe27a','#d39b12','#a77408'],tagg:['#e9eef1','#55606a','#262d33']};
+const RIMS={taros:['#f4f6f8','#a7afb7','#d3d9de'],devran:['#ffffff','#9aa3ad','#d7dde3'],sahan:['#f1f3f5','#8d969f','#c9cfd5'],anadal:['#fff','#b9a07a','#e6d6b8'],toprak:['#ffe27a','#d39b12','#a77408'],tagg:['#e9eef1','#55606a','#262d33']};
 
 /* ================= AUDIO ================= */
 let AC=null,eng=null;
