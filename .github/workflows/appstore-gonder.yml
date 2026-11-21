@@ -1,0 +1,22 @@
+name: App Store — incelemeye gönder
+# store/TETIK-GONDER değişince hazırlanmış sürümü App Review'a gönderir (Emre'nin "gönder" onayıyla).
+on:
+  push:
+    branches: [main]
+    paths: ['store/TETIK-GONDER']
+  workflow_dispatch:
+env:
+  ASC_KEY_ID: DJSHKK6T3P
+  ASC_ISSUER_ID: f4943ef8-df6f-42c8-a561-58554097ea35
+  APP_ID: "6836515355"
+  SURUM: "1.0.1"
+jobs:
+  gonder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash araclar/yayin-kontrol.sh
+      - run: pip install pyjwt cryptography requests
+      - name: Gönder
+        env: { P8: "${{ secrets.ASC_KEY_P8 }}" }
+        run: python3 araclar/appstore-gonder.py
