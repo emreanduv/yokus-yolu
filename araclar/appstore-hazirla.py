@@ -16,6 +16,9 @@ def send(m,p,body):
 rapor=[]
 # --- sürüm
 v=[x for x in get(f'/v1/apps/{APP}/appStoreVersions',**{'filter[platform]':'IOS','limit':10})['data'] if x['attributes']['appStoreState'] in ('PREPARE_FOR_SUBMISSION','DEVELOPER_REJECTED','REJECTED','METADATA_REJECTED')]
+if not v:
+    send('POST','/v1/appStoreVersions',{'data':{'type':'appStoreVersions','attributes':{'platform':'IOS','versionString':SURUM},'relationships':{'app':{'data':{'type':'apps','id':APP}}}}})
+    v=[x for x in get(f'/v1/apps/{APP}/appStoreVersions',**{'filter[platform]':'IOS','limit':10})['data'] if x['attributes']['appStoreState']=='PREPARE_FOR_SUBMISSION']
 if not v: raise SystemExit('Düzenlenebilir sürüm yok')
 vid=v[0]['id']; print('sürüm',v[0]['attributes']['versionString'],vid)
 a={'copyright':'2026 Mr. Anduv!','releaseType':'AFTER_APPROVAL'}

@@ -10,7 +10,7 @@ env:
   ASC_KEY_ID: DJSHKK6T3P
   ASC_ISSUER_ID: f4943ef8-df6f-42c8-a561-58554097ea35
   APP_ID: "6836515355"
-  SURUM: "1.0.0"
+  SURUM: "1.0.1"
 jobs:
   metin:
     runs-on: macos-latest

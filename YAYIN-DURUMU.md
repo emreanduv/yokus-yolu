@@ -16,6 +16,8 @@ Görseller: `store/screenshots/{tr,en}/{iphone69,ipad13,play}` (`python3 araclar
 - [x] 1.0.0 (2): 1923 bölüm, 10 sahne, Tam Sürüm, FM2010 menü, Malaklı/Van kedisi; TestFlight'ta (beta inceleme gönderildi); App Store sürümüne derleme 2 seçili; uygulama fiyatı ücretsiz; Tam Sürüm IAP oluşturuldu (yerelleştirme, 1,99 $, bölgeler, inceleme görseli)
 - [ ] Emre: TestFlight'ta 1.0.0 (2)'yi dene
 - [x] 20 Kas 2026 08:30: App Privacy "Data Not Collected" yayınlandı; iOS 1.0.0 (3) + Tam Sürüm birlikte App Review'a gönderildi (bekleniyor)
+- [x] 21 Kas 2026: **1.0.0 App Store'da yayında** (store/SON-SURUM = 1.0.0).
+- [ ] 1.0.1 (6): Taros 12, Serbest Sürüş ilk sekme, takla rampaları, menü yerini korur → App Store sürümü hazırlanıyor (appstore-hazir.yml), sonra incelemeye gönder
 - Derleme tetikleri: `store/TETIK-IOS` (iOS derle), `store/DERLEME` (beklenen derleme no; TestFlight'a aç), `store/TETIK-APPSTORE` (metin, görsel, fiyat, IAP, derleme seçimi)
 - [ ] Emre: Play Console'da "Uygulama oluştur" (ücretli) + kapalı test listesi
 - [ ] TestFlight + Play kapalı test → cihazda doğrulama → incelemeye gönder
